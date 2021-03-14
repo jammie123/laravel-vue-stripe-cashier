@@ -36104,6 +36104,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     updateOrder: function updateOrder(state, order) {
       state.order = order;
+    },
+    updateCart: function updateCart(state, cart) {
+      state.cart = cart;
     }
   },
   actions: {
@@ -36115,6 +36118,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       })["catch"](function (error) {
         return console.error(error);
       });
+    },
+    clearCart: function clearCart(_ref2) {
+      var commit = _ref2.commit;
+      commit('updateCart', []);
     }
   }
 });
@@ -36186,8 +36193,8 @@ module.exports = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/jan.fuxa/Documents/web/My-project/eshop-vuex/laravel-vue-stripe-cashier/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jan.fuxa/Documents/web/My-project/eshop-vuex/laravel-vue-stripe-cashier/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
