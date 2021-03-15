@@ -194,7 +194,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__["loadStripe"])("pk_test_645AlOxRwCE6M9Sgj3USOVsO");
+              return Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__["loadStripe"])("");
 
             case 2:
               _this.stripe = _context.sent;
@@ -269,6 +269,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     console.log(response);
 
                     _this2.$store.commit('updateOrder', response.data);
+
+                    _this2.$store.dispatch('clearCart');
 
                     _this2.$router.push({
                       name: 'order.summary'

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+// $DATABASE_URL=parse_url('postgres://plzekvzdujwyof:47bdf1ca97938a7f274b7a8074558436cda3c8ab15a333c07c308333851e511e@ec2-18-232-232-96.compute-1.amazonaws.com:5432/d73l6a9pia3g1g');
+
 return [
 
     /*
@@ -47,11 +49,11 @@ return [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
+            'port' => env('DB_PORT', '8889'),
+            'database' => env('DB_DATABASE', 'eshop'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', 'root'),
+            'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -68,7 +70,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
+            // 'database' => trim($DATABASE_URL["path"], "/"),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
