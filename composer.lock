@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "0c540c88da2a1b77b6c93487100d12b2",
+=======
+    "content-hash": "d0f786c6cdfbeef76d0d1ea87e2ac5e3",
+>>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1464,6 +1468,7 @@
                 "source": "https://github.com/laravel/tinker/tree/v2.6.1"
             },
             "time": "2021-03-02T16:53:12+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "laravel/ui",
@@ -1522,6 +1527,8 @@
                 "source": "https://github.com/laravel/ui/tree/v3.2.0"
             },
             "time": "2021-01-06T19:20:22+00:00"
+=======
+>>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
         },
         {
             "name": "league/commonmark",

@@ -10,10 +10,14 @@
     "require": {
         "php": "^7.3|^8.0",
         "cloudinary-labs/cloudinary-laravel": "^1.0",
+<<<<<<< HEAD
         "fakerphp/faker": "^1.9.1",
+=======
+>>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "fakerphp/faker": "^1.9.1",
         "laravel/cashier": "^12.6",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",

@@ -6,7 +6,11 @@
     @endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+<<<<<<< HEAD
             {{ __('Produkty') }}
+=======
+            {{ __('Dashboard') }}
+>>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
         </h2>
     </x-slot>
 

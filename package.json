@@ -19,6 +19,7 @@
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
+<<<<<<< HEAD
         "popper.js": "^1.12",
         "postcss": "^8.2.1",
         "postcss-import": "^12.0.1",
@@ -28,6 +29,13 @@
         "tailwindcss": "^2.0.2",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+=======
+        "postcss": "^8.2.1",
+        "postcss-import": "^12.0.1",
+        "resolve-url-loader": "^3.1.0",
+        "tailwindcss": "^2.0.2",
+        "vue-template-compiler": "^2.6.12"
+>>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
     },
     "dependencies": {
         "@stripe/stripe-js": "^1.11.0",
