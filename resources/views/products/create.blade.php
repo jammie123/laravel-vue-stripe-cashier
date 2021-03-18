@@ -8,8 +8,10 @@
     <div class="py-12 container mx-auto">
         <h1 class="text-3xl text-bold pb-16">Nový produkt</h1>
         <form class="container mx-auto flex flex-col gap-4" action="{{ route('products.store') }}"
-            method="POST">
+            method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <label>Obrázky produktu</label>
+            <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control">
             <label>Název produktu</label>
             <input id="name" type="text" name="name">
             <label>Cena produktu</label>

@@ -46,23 +46,51 @@ class ProductController extends Controller
     */
     public function update(Request $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'weight' => 'required',
-            'description' => 'required',
-            'sku' => 'required'
-        ]);
-        $product->update($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success', 'Project updated successfully');
+        foreach($request->file as $image)
+        {
+            $imageName=$image->getClientOriginalName();
+            $image->move(public_path().'/images/', $imageName);
+            $fileNames[] = $imageName;
+        }
+
+        $images = json_encode($fileNames);
+
+        dd($images);
+
+        // $request->validate([
+        //     'name' => 'required',
+        //     'price' => 'required',
+        //     'weight' => 'required',
+        //     'description' => 'required',
+        //     'sku' => 'required'
+        // ]);
+        // $product->update($request->all());
+
+        // return redirect()->route('products.index')
+        //     ->with('success', 'Project updated successfully');
 
     }
     /* Save the specified resource in storage.
     */
     public function store(Request $request)
     {
+
+        foreach($request->file('file') as $image)
+        {
+            $imageName=$image->getClientOriginalName();
+            $image->move(public_path().'/images/', $imageName);  
+            $fileNames[] = $imageName;
+        }
+
+        dd($fileNames);
+        // $images = json_encode($fileNames);
+        
+        // // Store $images image in DATABASE from HERE 
+        // Image::create(['images' => $images]);
+
+
+
 
         $product = new Product;
         $product->name = $request->name;

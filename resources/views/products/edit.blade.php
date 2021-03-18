@@ -7,9 +7,11 @@
 
     <div class="py-12 container mx-auto">
         <form class="container mx-auto flex flex-col gap-4" action="{{ route('products.update', $product->id) }}"
-            method="POST">
+            method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
+            <label>Obrázky produktu</label>
+            <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control">
             <label>Název produktu</label>
             <input id="name" type="text" name="name" value={{ $product->name }}>
             <label>Cena produktu</label>
