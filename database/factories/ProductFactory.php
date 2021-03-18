@@ -24,12 +24,15 @@ class ProductFactory extends Factory
     public function definition()
     {
         $productPrefixes = ['Sweater', 'Pants', 'Shirt', 'Hat', 'Glasses', 'Socks'];
+        $productWeight = ['5', '10', '15', '20'];
         $name = $this->faker->company . ' ' . Arr::random($productPrefixes);
 
         return [
             'name' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->realText(320),
+            'weight' => Arr::random($productWeight),
+            'sku' => $this->faker->numberBetween(0, 10),
             'price' => $this->faker->numberBetween(10000, 100000),
         ];
     }

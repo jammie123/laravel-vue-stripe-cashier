@@ -36,7 +36,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
-        $product->delete();
+
 
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully');
@@ -48,7 +48,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'prize' => 'required',
+            'price' => 'required',
             'weight' => 'required',
             'description' => 'required',
             'sku' => 'required'
@@ -66,10 +66,10 @@ class ProductController extends Controller
 
         $product = new Product;
         $product->name = $request->name;
-        $product->prize = $request->prize;
+        $product->price = $request->price;
         $product->description = $request->description;
         $product->weight = $request->weight;
-        $product->sku = 1;
+        $product->sku = $request->sku;
         $product->create_date = Carbon::now();
         $product->save();
         return redirect()->route('products.index')

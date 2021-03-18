@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Product;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
- /* Display all products.
-    */
+    /* Display all products.
+     */
     public function index()
     {
         $orders = Order::all();
         return view('orders.index')->with('orders', $orders);
     }
     /* Show the form for create the specified resource with filled specified product.
-    */
+     */
     public function edit(Order $order)
     {
         // dd($product);
@@ -24,26 +25,26 @@ class OrderController extends Controller
     }
 
     /* Show the form for create the specified resource.
-    */
+     */
     public function create()
     {
         return view('orders.create');
     }
 
     /* Delete the specified resource in storage.
-    */
+     */
     public function destroy($id)
     {
-        dd($id);
+
         Order::destroy($id);
-        $order->delete();
+        // $order->delete();
 
         return redirect()->route('orders.index')
-                        ->with('success','Product deleted successfully');
+            ->with('success', 'Product deleted successfully');
     }
 
     /* Update the specified resource in storage.
-    */
+     */
     public function update(Request $request, Order $order)
     {
         $request->validate([
@@ -56,7 +57,7 @@ class OrderController extends Controller
 
     }
     /* Save the specified resource in storage.
-    */
+     */
     public function store(Request $request)
     {
 
@@ -64,9 +65,9 @@ class OrderController extends Controller
         $order->customer_id = 1;
         $order->amount = $request->amount;
         $order->order_adress = $request->order_adress;
-        $order->order_email =  $request->order_email;
-        $order->order_phone =  $request->order_phone;
-        $order->order_status =  "1";
+        $order->order_email = $request->order_email;
+        $order->order_phone = $request->order_phone;
+        $order->order_status = "1";
         $order->order_date = Carbon::now();
         $order->save();
         // $order->products()->attach([1=>[
@@ -83,15 +84,38 @@ class OrderController extends Controller
             ->with('success', 'Product created successfully.');
     }
 
-      /**
+    /**
      * Display the specified resource.
      *
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Order $order)
     {
-        return view('products.show',compact('product'));
+
+        return view('orders.show')->with('order', $order);
+    }
+
+    public function deleteProduct($order_id, $product_id)
+    {
+
+        $order = Order::findOrFail($order_id);
+        
+
+        if($order->products()->count()==1){
+            $order->delete();
+            return redirect()->route('orders.index')
+            ->with('success', 'Project updated successfully');
+        }
+        else{
+            $product = Product::findOrFail($product_id);
+            $order->total = $order->total - $product->price;
+            $order->products()->detach($product_id);
+            $order->save();
+        }
+
+        return redirect()->back()
+            ->with('success', 'Project updated successfully');
     }
 
 }

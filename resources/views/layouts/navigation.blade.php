@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto ">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -15,12 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-<<<<<<< HEAD
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('produkty')">
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         {{ __('Produkty') }}
                     </x-nav-link>
-=======
->>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
+                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                        {{ __('Objednávky') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('Uživatelé') }}
+                    </x-nav-link>
                 </div>
             </div>
 

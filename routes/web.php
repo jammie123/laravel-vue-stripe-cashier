@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ProductController;
-<<<<<<< HEAD
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 Auth::routes();
 
@@ -15,22 +16,10 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     Route::resource('admin/products', ProductController::class);
-    Route::resource('admin/orders', ProductController::class);
+    Route::resource('admin/orders', OrderController::class);
+    Route::resource('admin/users', UserController::class);
+    Route::post('admin/orders/{order_id}/{product_id}', [OrderController::class, 'deleteProduct'])->name('orders.delete');
 });
-=======
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-
-Route::resource('admin/products', ProductController::class);
-
-
-
-Route::get('/pokus', [ProductController::class, 'pokus']);
-Route::post('/upload', [FileUploadController::class, 'storeUploads']);
->>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
 
 
 
@@ -41,10 +30,6 @@ Route::any('/{any}', function() {
     return view('app');
 })->where('any', '.*');
 
-<<<<<<< HEAD
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
->>>>>>> 6f5545b3a83570089791f44214d6ee78e4c1271a
+
