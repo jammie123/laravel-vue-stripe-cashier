@@ -39,7 +39,7 @@ class ProductController extends Controller
 
 
         return redirect()->route('products.index')
-                        ->with('success','Product deleted successfully');
+            ->with('success', 'Product deleted successfully');
     }
 
     /* Update the specified resource in storage.
@@ -47,16 +47,15 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
 
-        foreach($request->file as $image)
-        {
-            $imageName=$image->getClientOriginalName();
-            $image->move(public_path().'/images/', $imageName);
+
+        foreach ($request->image as $image) {
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path() . '/images/', $imageName);
             $fileNames[] = $imageName;
         }
 
         $images = json_encode($fileNames);
 
-        dd($images);
 
         // $request->validate([
         //     'name' => 'required',
@@ -65,27 +64,33 @@ class ProductController extends Controller
         //     'description' => 'required',
         //     'sku' => 'required'
         // ]);
-        // $product->update($request->all());
+       
+       
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->weight = $request->weight;
+        $product->sku = $request->sku;
+        $product->image = $images;
+        $product->update();
 
-        // return redirect()->route('products.index')
-        //     ->with('success', 'Project updated successfully');
-
+        return redirect()->route('products.index')
+            ->with('success', 'Project updated successfully');
     }
     /* Save the specified resource in storage.
     */
     public function store(Request $request)
     {
 
-        foreach($request->file('file') as $image)
-        {
-            $imageName=$image->getClientOriginalName();
-            $image->move(public_path().'/images/', $imageName);  
+        foreach ($request->image as $image) {
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path() . '/images/', $imageName);
             $fileNames[] = $imageName;
         }
 
         dd($fileNames);
         // $images = json_encode($fileNames);
-        
+
         // // Store $images image in DATABASE from HERE 
         // Image::create(['images' => $images]);
 
@@ -104,7 +109,7 @@ class ProductController extends Controller
             ->with('success', 'Product created successfully.');
     }
 
-      /**
+    /**
      * Display the specified resource.
      *
      * @param  \App\Product  $product
@@ -112,7 +117,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show',compact('product'));
-    } 
-     
+        return view('products.show', compact('product'));
+    }
 }

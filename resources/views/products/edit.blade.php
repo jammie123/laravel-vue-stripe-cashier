@@ -10,8 +10,16 @@
             method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
+            @if ($product->image)
+                                @foreach(json_decode($product->image) as $value)
+                                <div class="col-md-2">
+                                    <img src="{{ asset('images/'.$value) }}" width="100">
+                                </div>
+                                @endforeach
+                            @endif
+                        
             <label>Obrázky produktu</label>
-            <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control">
+            <input type="file" name="image[]" accept="image/*" multiple="multiple" class="form-control">
             <label>Název produktu</label>
             <input id="name" type="text" name="name" value={{ $product->name }}>
             <label>Cena produktu</label>
