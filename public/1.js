@@ -56,14 +56,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
       amount = amount / 100;
-      return amount.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD'
+      return amount.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
       });
+    },
+    getThumbnail: function getThumbnail(product) {
+      if (product.image != null) {
+        return "images/" + JSON.parse(product.image)[0];
+      }
     }
   },
   computed: {
@@ -123,7 +147,7 @@ var render = function() {
                           "object-cover object-center w-full h-full block",
                         attrs: {
                           alt: "ecommerce",
-                          src: "https://dummyimage.com/420x260"
+                          src: _vm.getThumbnail(product)
                         }
                       })
                     ]
@@ -185,13 +209,13 @@ var staticRenderFns = [
             staticClass:
               "text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2"
           },
-          [_vm._v("N/A")]
+          [_vm._v("\n                        N/A\n                    ")]
         ),
         _vm._v(" "),
         _c(
           "h2",
           { staticClass: "text-gray-900 title-font text-lg font-medium" },
-          [_vm._v("Loading")]
+          [_vm._v("\n                        Loading\n                    ")]
         ),
         _vm._v(" "),
         _c("p", { staticClass: "mt-1" }, [_vm._v("$0.00")])

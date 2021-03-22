@@ -31,10 +31,10 @@
     },
     "dependencies": {
         "@stripe/stripe-js": "^1.11.0",
+        "autoprefixer": "^9.8.6",
+        "postcss": "^7.0.35",
         "vue": "^2.6.12",
         "vue-router": "^3.4.9",
-        "autoprefixer": "^9.8.6",
-        "vuex": "^3.6.0",
-        "postcss": "^7.0.35"
+        "vuex": "^3.6.0"
     }
 }

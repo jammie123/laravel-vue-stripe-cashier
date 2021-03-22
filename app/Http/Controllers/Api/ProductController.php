@@ -11,8 +11,10 @@ class ProductController extends Controller
 {
 
     public function index()
+
     {
-        return Product::with(['categories' => function($query) {
+        
+        return Product::with(['categories' => function ($query) {
             $query->select('id', 'name');
         }])
             ->get();
@@ -24,5 +26,4 @@ class ProductController extends Controller
 
         return $product;
     }
-
 }
