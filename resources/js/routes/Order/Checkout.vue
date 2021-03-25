@@ -1,4 +1,4 @@
-<template>
+x<template>
     <div class="w-full">
         <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto">
             <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -197,11 +197,11 @@
     </div>
 </template>
 <script>
-import { loadStripe } from "@stripe/stripe-js";
+
 export default {
     data() {
         return {
-            stripe: {},
+         
             cardElement: {},
             customer: {
                 first_name: "",
@@ -215,19 +215,7 @@ export default {
             paymentProcessing: false
         };
     },
-    async mounted() {
-        this.stripe = await loadStripe(process.env.MIX_STRIPE_KEY);
 
-        const elements = this.stripe.elements();
-        this.cardElement = elements.create("card", {
-            classes: {
-                base:
-                    "bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 p-3 leading-8 transition-colors duration-200 ease-in-out"
-            }
-        });
-
-        this.cardElement.mount("#card-element");
-    },
     methods: {
         cartLineTotal(item) {
             let amount = item.price * item.quantity;
@@ -243,13 +231,16 @@ export default {
                 (acc, item) => acc + item.price * item.quantity,
                 0
             );
-            this.customer.cart = JSON.stringify(this.$store.state.cart);
-            console.log(this.customer);
+            // this.customer.cart = JSON.stringify(this.$store.state.cart);
+            let productIds = this.$store.state.cart.map(item=>item.id);
+            this.customer.cart = JSON.stringify(productIds);
+
+
 
             axios
-                .post("/api/orders/", this.customer)
+                .post("/api/orders", this.customer)
                 .then(response => {
-                    this.paymentProcessing = false;
+               
                     console.log(response);
 
                     this.$store.commit("updateOrder", response.data);
@@ -258,7 +249,7 @@ export default {
                     this.$router.push({ name: "order.summary" });
                 })
                 .catch(error => {
-                    this.paymentProcessing = false;
+                  
                     console.error(error);
                 });
         }

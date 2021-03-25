@@ -4,6 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -15,18 +18,16 @@ class OrderController extends Controller
         return Order::all();
     }
 
-    public function store(Order $order)
+    public function store(Request $request)
     {
-        dd($order);
-        // $order = new Order();
-        // $order->customer_id = 1;
-        // $order->amount = $request->amount;
-        // $order->order_adress = $request->order_adress;
-        // $order->order_email = $request->order_email;
-        // $order->order_phone = $request->order_phone;
-        // $order->order_status = "1";
-        // $order->order_date = Carbon::now();
-        // $order->save();
-        // return $product;
+        $user = User::firstOrCreate(["email"=>$request->email]);
+        $order = new Order();
+        $order->products()->attach($order->id, json_decode($request->cart,true));
+        $order->user()->associate($user);
+        $order->transaction_id = Str::random(16);
+        $order->save();
+
+        return response()->json($order);
+
     }
 }
