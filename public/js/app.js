@@ -54159,25 +54159,25 @@ module.exports = [{
   path: '/',
   name: 'products.index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./routes/Products/Index.vue */ "./resources/js/routes/Products/Index.vue"));
+    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./routes/Products/Index.vue */ "./resources/js/routes/Products/Index.vue"));
   }
 }, {
   path: '/product/:slug',
   name: 'products.show',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./routes/Products/Show.vue */ "./resources/js/routes/Products/Show.vue"));
+    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./routes/Products/Show.vue */ "./resources/js/routes/Products/Show.vue"));
   }
 }, {
   path: '/checkout',
   name: 'order.checkout',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./routes/Order/Checkout.vue */ "./resources/js/routes/Order/Checkout.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./routes/Order/Checkout.vue */ "./resources/js/routes/Order/Checkout.vue"));
   }
 }, {
   path: '/summary',
   name: 'order.summary',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./routes/Order/Summary.vue */ "./resources/js/routes/Order/Summary.vue"));
+    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./routes/Order/Summary.vue */ "./resources/js/routes/Order/Summary.vue"));
   }
 }];
 
@@ -54190,8 +54190,8 @@ module.exports = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/janfuxa/Downloads/web/My-project/eshop-vuex/laravel-vue-stripe-cashier/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/janfuxa/Downloads/web/My-project/eshop-vuex/laravel-vue-stripe-cashier/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/jan.fuxa/Documents/web/My-project/eshop-vuex/laravel-vue-stripe-cashier/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jan.fuxa/Documents/web/My-project/eshop-vuex/laravel-vue-stripe-cashier/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
