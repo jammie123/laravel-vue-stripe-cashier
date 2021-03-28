@@ -244,7 +244,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var productIds;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -252,21 +251,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.customer.amount = _this.$store.state.cart.reduce(function (acc, item) {
                   return acc + item.price * item.quantity;
                 }, 0); // this.customer.cart = JSON.stringify(this.$store.state.cart);
+                // let productIds = this.$store.state.cart.map(item=>item.id);
+                // let quantity = this.$store.state.cart.map(item=>item.quantity);
 
-                productIds = _this.$store.state.cart.map(function (item) {
-                  return item.id;
-                });
-                _this.customer.cart = JSON.stringify(productIds);
+                _this.customer.cart = JSON.stringify(_this.$store.state.cart);
+                console.log(_this.customer.cart);
                 axios.post("/api/orders", _this.customer).then(function (response) {
-                  console.log(response);
-
-                  _this.$store.commit("updateOrder", response.data);
-
-                  _this.$store.dispatch("clearCart");
-
-                  _this.$router.push({
-                    name: "order.summary"
-                  });
+                  console.log(response); // this.$store.commit("updateOrder", response.data);
+                  // this.$store.dispatch("clearCart");
+                  // this.$router.push({ name: "order.summary" });
                 })["catch"](function (error) {
                   console.error(error);
                 });

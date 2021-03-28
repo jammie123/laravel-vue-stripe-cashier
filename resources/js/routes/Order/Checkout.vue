@@ -232,8 +232,11 @@ export default {
                 0
             );
             // this.customer.cart = JSON.stringify(this.$store.state.cart);
-            let productIds = this.$store.state.cart.map(item=>item.id);
-            this.customer.cart = JSON.stringify(productIds);
+            // let productIds = this.$store.state.cart.map(item=>item.id);
+            // let quantity = this.$store.state.cart.map(item=>item.quantity);
+           
+            this.customer.cart = JSON.stringify(this.$store.state.cart);
+                    console.log(this.customer.cart);
 
 
 
@@ -243,10 +246,10 @@ export default {
                
                     console.log(response);
 
-                    this.$store.commit("updateOrder", response.data);
-                    this.$store.dispatch("clearCart");
+                    // this.$store.commit("updateOrder", response.data);
+                    // this.$store.dispatch("clearCart");
 
-                    this.$router.push({ name: "order.summary" });
+                    // this.$router.push({ name: "order.summary" });
                 })
                 .catch(error => {
                   
