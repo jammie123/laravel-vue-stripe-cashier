@@ -68,10 +68,11 @@
 export default {
     methods: {
         formatCurrency(amount) {
-            amount = amount / 100;
-            return amount.toLocaleString("en-US", {
+            return amount.toLocaleString("cs-CZ", {
                 style: "currency",
-                currency: "USD"
+                currency: "CZK",
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
             });
         },
 

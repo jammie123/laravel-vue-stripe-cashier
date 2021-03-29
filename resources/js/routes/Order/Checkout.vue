@@ -197,11 +197,9 @@ x<template>
     </div>
 </template>
 <script>
-
 export default {
     data() {
         return {
-         
             cardElement: {},
             customer: {
                 first_name: "",
@@ -219,11 +217,13 @@ export default {
     methods: {
         cartLineTotal(item) {
             let amount = item.price * item.quantity;
-            amount = amount / 100;
+            amount = amount;
 
-            return amount.toLocaleString("en-US", {
+            return amount.toLocaleString("cs-CZ", {
                 style: "currency",
-                currency: "USD"
+                currency: "CZK",
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
             });
         },
         async postOrder() {
@@ -231,19 +231,18 @@ export default {
                 (acc, item) => acc + item.price * item.quantity,
                 0
             );
+            console.log(this.customer.amount);
+
             // this.customer.cart = JSON.stringify(this.$store.state.cart);
             // let productIds = this.$store.state.cart.map(item=>item.id);
             // let quantity = this.$store.state.cart.map(item=>item.quantity);
-           
+
             this.customer.cart = JSON.stringify(this.$store.state.cart);
-                    console.log(this.customer.cart);
-
-
+            console.log(this.customer.cart);
 
             axios
                 .post("/api/orders", this.customer)
                 .then(response => {
-               
                     console.log(response);
 
                     // this.$store.commit("updateOrder", response.data);
@@ -252,7 +251,6 @@ export default {
                     // this.$router.push({ name: "order.summary" });
                 })
                 .catch(error => {
-                  
                     console.error(error);
                 });
         }
@@ -272,11 +270,12 @@ export default {
                 (acc, item) => acc + item.price * item.quantity,
                 0
             );
-            amount = amount / 100;
 
-            return amount.toLocaleString("en-US", {
+            return amount.toLocaleString("cs-CZ", {
                 style: "currency",
-                currency: "USD"
+                currency: "CZK",
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
             });
         }
     }

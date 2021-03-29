@@ -33,7 +33,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->realText(320),
             'weight' => Arr::random($productWeight),
             'sku' => $this->faker->numberBetween(0, 10),
-            'price' => $this->faker->numberBetween(10000, 100000),
+            'price' => $this->faker->randomFloat(10000, 100000),
         ];
     }
 }

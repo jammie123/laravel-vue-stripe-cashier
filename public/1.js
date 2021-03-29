@@ -78,10 +78,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
-      amount = amount / 100;
-      return amount.toLocaleString("en-US", {
+      return amount.toLocaleString("cs-CZ", {
         style: "currency",
-        currency: "USD"
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
       });
     },
     getThumbnail: function getThumbnail(product) {

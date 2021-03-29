@@ -234,10 +234,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     cartLineTotal: function cartLineTotal(item) {
       var amount = item.price * item.quantity;
-      amount = amount / 100;
-      return amount.toLocaleString("en-US", {
+      amount = amount;
+      return amount.toLocaleString("cs-CZ", {
         style: "currency",
-        currency: "USD"
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
       });
     },
     postOrder: function postOrder() {
@@ -250,7 +252,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.customer.amount = _this.$store.state.cart.reduce(function (acc, item) {
                   return acc + item.price * item.quantity;
-                }, 0); // this.customer.cart = JSON.stringify(this.$store.state.cart);
+                }, 0);
+                console.log(_this.customer.amount); // this.customer.cart = JSON.stringify(this.$store.state.cart);
                 // let productIds = this.$store.state.cart.map(item=>item.id);
                 // let quantity = this.$store.state.cart.map(item=>item.quantity);
 
@@ -264,7 +267,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.error(error);
                 });
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -286,10 +289,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var amount = this.$store.state.cart.reduce(function (acc, item) {
         return acc + item.price * item.quantity;
       }, 0);
-      amount = amount / 100;
-      return amount.toLocaleString("en-US", {
+      return amount.toLocaleString("cs-CZ", {
         style: "currency",
-        currency: "USD"
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
       });
     }
   }

@@ -43,13 +43,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
-      amount = amount / 100;
-      return amount.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD'
+      return amount.toLocaleString("cs-CZ", {
+        style: "currency",
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
       });
     }
   },
@@ -152,7 +156,11 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("Add To Cart")]
+                        [
+                          _vm._v(
+                            "\n                        Add To Cart\n                    "
+                          )
+                        ]
                       )
                     ]
                   )

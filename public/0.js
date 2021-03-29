@@ -41,14 +41,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     cartLineTotal: function cartLineTotal(item) {
       var amount = item.price * item.pivot.quantity;
-      amount = amount / 100;
-      return amount.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD'
+      return amount.toLocaleString("cs-CZ", {
+        style: "currency",
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
       });
     }
   },
@@ -65,10 +80,11 @@ __webpack_require__.r(__webpack_exports__);
       var amount = this.$store.state.order.products.reduce(function (acc, item) {
         return acc + item.price * item.pivot.quantity;
       }, 0);
-      amount = amount / 100;
-      return amount.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD'
+      return amount.toLocaleString("cs-CZ", {
+        style: "currency",
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
       });
     }
   }
@@ -103,7 +119,7 @@ var render = function() {
       _c(
         "h1",
         { staticClass: "text-gray-900 text-3xl title-font font-medium mb-4" },
-        [_vm._v("Thank you for your purchase")]
+        [_vm._v("\n            Thank you for your purchase\n        ")]
       ),
       _vm._v(" "),
       _c(
@@ -170,7 +186,7 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl"
           },
-          [_vm._v("Item")]
+          [_vm._v("\n                        Item\n                    ")]
         ),
         _vm._v(" "),
         _c(
@@ -179,7 +195,7 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200"
           },
-          [_vm._v("Quantity")]
+          [_vm._v("\n                        Quantity\n                    ")]
         ),
         _vm._v(" "),
         _c(
@@ -188,7 +204,7 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200"
           },
-          [_vm._v("Price")]
+          [_vm._v("\n                        Price\n                    ")]
         )
       ])
     ])

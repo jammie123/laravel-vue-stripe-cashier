@@ -8,10 +8,33 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 class OrderController extends Controller
 {
     //
+    public function getTotalPrice($cart)
+    {
+        $total = 0;
+        foreach ($cart as $item) {
+            $total =  $total + ($item["quantity"] * $item["price"]);
+        }
+        return $total;
+    }
+
+    public function getCartItems($cart, $order)
+    {
+        $cartItems = collect([]);
+        foreach ($cart as $item) {
+            // $item = collect($item)->only(["id", "quantity"]);
+            $order->products()->attach($order->id, ["product_id" => $item["id"], "quantity"=> $item["quantity"]]);
+            // $cartItems->push($item);
+        }
+
+
+        return $order;
+    }
+
     public function index()
 
     {
@@ -24,17 +47,16 @@ class OrderController extends Controller
         $user = User::firstOrCreate(["email" => $request->email]);
         $order = new Order();
 
-        $quantity = json_decode($request->cart, true)[0]['quantity'];
-        $productId = json_decode($request->cart, true)[0]['id'];
-        $product = Product::findOrFail($productId);
+
+
+
         $order->transaction_id = Str::random(16);
         $order->user()->associate($user);
+        $cart = collect(json_decode($request->cart, true));
+        $order->total = $this->getTotalPrice($cart) / 100;
         $order->save();
-
-        $order->products()->attach($order->id, ['product_id'=>$productId, "quantity"=>$quantity]);
-
-
-
+        $this->getCartItems($cart, $order);
+        
 
         return response()->json($order);
     }
