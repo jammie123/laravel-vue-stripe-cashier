@@ -53,7 +53,7 @@ class OrderController extends Controller
         $order->transaction_id = Str::random(16);
         $order->user()->associate($user);
         $cart = collect(json_decode($request->cart, true));
-        $order->total = $this->getTotalPrice($cart) / 100;
+        $order->total = $this->getTotalPrice($cart);
         $order->save();
         $this->getCartItems($cart, $order);
         
