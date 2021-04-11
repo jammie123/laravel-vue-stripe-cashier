@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[2],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/routes/Page/HomePage.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
@@ -9,8 +9,6 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -104,11 +102,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "w-full m-auto " }, [
       _c("img", {
-        staticClass: "w-screen h-screen",
-        staticStyle: {
-          background:
-            "url('https://res.cloudinary.com/dayh1edx8/image/upload/w_1920,h_1000,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg')",
-          "background-position": "50% 0%"
+        staticClass: "h-30",
+        attrs: {
+          src:
+            "https://res.cloudinary.com/dayh1edx8/image/upload/w_2000,h_800,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg"
         }
       }),
       _vm._v(" "),
@@ -239,10 +236,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass:
-              "bg-gray-100 p-8 rounded-md my-16 col-start-3 col-end-7"
-          },
+          { staticClass: "bg-gray-100 p-8 rounded-md my-16 col-span-8" },
           [
             _c("h3", { staticClass: "text-3xl mb-4" }, [
               _vm._v("Nenechte si ujít...")

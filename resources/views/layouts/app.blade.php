@@ -22,13 +22,13 @@
 
             <!-- Page Heading -->
             <header class="bg-white shadow ">
-                <div class="container mx-auto py-6 ">
+                <div class="mx-auto py-6 ">
                     {{ $header }}
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main class="container mx-auto">
+            <main class="mx-auto">
                 {{ $slot }}
             </main>
         </div>

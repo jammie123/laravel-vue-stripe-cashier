@@ -17,15 +17,15 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::factory()
-            ->times(20)
+            ->times(3)
             ->create();
 
         Category::factory()
-            ->times(4)
+            ->times(2)
             ->create();
 
         Order::factory()
-            ->times(10)
+            ->times(5)
             ->create();
 
         $categories = Category::all();

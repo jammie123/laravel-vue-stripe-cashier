@@ -70,6 +70,7 @@ const store = new Vuex.Store({
     getters: {
         getTotal: state => {
             return state.total;
+          
         },
 
 
@@ -111,6 +112,6 @@ const app = new Vue({
             .then(_ => {})
             .catch(error => console.error(error));
 
-        store.dispatch('getTotal');
+        // store.dispatch('getTotal');
     }
 });

@@ -47,15 +47,16 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
 
+        if ($request->image) {
+            foreach ($request->image as $image) {
+                $imageName = $image->getClientOriginalName();
+                $image->move(public_path() . '/images/', $imageName);
+                $fileNames[] = $imageName;
+            }
 
-        foreach ($request->image as $image) {
-            $imageName = $image->getClientOriginalName();
-            $image->move(public_path() . '/images/', $imageName);
-            $fileNames[] = $imageName;
+            $images = json_encode($fileNames);
+            $product->image = $images;
         }
-
-        $images = json_encode($fileNames);
-
 
         // $request->validate([
         //     'name' => 'required',
@@ -64,14 +65,14 @@ class ProductController extends Controller
         //     'description' => 'required',
         //     'sku' => 'required'
         // ]);
-       
-       
+
+
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->weight = $request->weight;
         $product->sku = $request->sku;
-        $product->image = $images;
+
         $product->update();
 
         return redirect()->route('products.index')

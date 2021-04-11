@@ -2102,17 +2102,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
-  methods: {},
+  props: ["fixed"],
+  methods: {
+    getCurrency: function getCurrency(total) {
+      return total.toLocaleString("cs-CZ", {
+        style: "currency",
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+    }
+  },
+  data: function data() {
+    return {
+      fixed: false
+    };
+  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     total: "getTotal",
     items: "getCartItems"
@@ -37738,7 +37746,11 @@ var render = function() {
     _c(
       "div",
       { staticClass: "wrapper" },
-      [_c("Header"), _vm._v(" "), _c("router-view")],
+      [
+        _c("Header", { class: _vm.$route.meta.headerClass }),
+        _vm._v(" "),
+        _c("router-view")
+      ],
       1
     )
   ])
@@ -37765,93 +37777,89 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("header", { staticClass: "text-gray-700 body-font" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass:
-              "flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
-          },
-          [
-            _c(
-              "svg",
-              {
-                staticClass:
-                  "w-10 h-10 text-white p-2 bg-indigo-500 rounded-full",
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  fill: "none",
-                  stroke: "currentColor",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "2",
-                  viewBox: "0 0 24 24"
+  return _c(
+    "header",
+    {
+      staticClass:
+        "text-gray-800 body-font w-full bg-gradient-to-b from-white to-transparent",
+      class: { fixed: _vm.fixed }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass:
+                "flex title-font font-medium items-center mb-4 md:mb-0"
+            },
+            [
+              _c(
+                "span",
+                { staticClass: "ml-3 text-xl" },
+                [
+                  _c("router-link", { attrs: { to: { name: "home.index" } } }, [
+                    _vm._v(
+                      "\n                    Farma Častrov\n                "
+                    )
+                  ])
+                ],
+                1
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "nav",
+            {
+              staticClass:
+                "md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400\tflex flex-wrap items-center text-base justify-center"
+            },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "mr-5 hover:text-gray-900",
+                  attrs: { to: { name: "products.index" } }
+                },
+                [_vm._v("\n                Produkty\n            ")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass:
+                "inline-flex items-center bg-gray-600 text-white border-0 py-2 px-3 focus:outline-none hover:bg-gray-700 rounded-full text-base mt-4 md:mt-0",
+              attrs: { to: { name: "order.checkout" } }
+            },
+            [
+              _vm._v("Košík\n            "),
+              _c("span", {
+                staticClass: "inline-block ml-1 text-white",
+                domProps: {
+                  textContent: _vm._s(
+                    (_vm.items == 0 ? "je prázdný" : "") +
+                      " " +
+                      "" +
+                      (_vm.total == 0 ? "" : _vm.getCurrency(_vm.total))
+                  )
                 }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("span", { staticClass: "ml-3 text-xl" }, [
-              _vm._v("Farma Častrov")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "nav",
-          {
-            staticClass:
-              "md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400\tflex flex-wrap items-center text-base justify-center"
-          },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "mr-5 hover:text-gray-900",
-                attrs: { to: { name: "products.index" } }
-              },
-              [_vm._v("\n                Produkty\n            ")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          {
-            staticClass:
-              "inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0",
-            attrs: { to: { name: "order.checkout" } }
-          },
-          [
-            _vm._v("\n            Košík"),
-            _c("span", {
-              staticClass: "inline-block ml-1",
-              domProps: {
-                textContent: _vm._s(
-                  "(" + _vm.items + ")" + "" + (_vm.total == 0 ? "" : _vm.total)
-                )
-              }
-            })
-          ]
-        )
-      ],
-      1
-    )
-  ])
+              })
+            ]
+          )
+        ],
+        1
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54501,8 +54509,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   created: function created() {
     store.dispatch("getCategories").then(function (_) {})["catch"](function (error) {
       return console.error(error);
-    });
-    store.dispatch('getTotal');
+    }); // store.dispatch('getTotal');
   }
 });
 
@@ -54626,14 +54633,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./resources/js/components/Header.vue ***!
   \********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Header_vue_vue_type_template_id_1f42fb90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header.vue?vue&type=template&id=1f42fb90& */ "./resources/js/components/Header.vue?vue&type=template&id=1f42fb90&");
 /* harmony import */ var _Header_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header.vue?vue&type=script&lang=js& */ "./resources/js/components/Header.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Header_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Header_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -54663,7 +54671,7 @@ component.options.__file = "resources/js/components/Header.vue"
 /*!*********************************************************************!*\
   !*** ./resources/js/components/Header.vue?vue&type=script&lang=js& ***!
   \*********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54700,21 +54708,30 @@ __webpack_require__.r(__webpack_exports__);
 
 module.exports = [{
   path: '/',
+  name: 'home.index',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./routes/Page/HomePage.vue */ "./resources/js/routes/Page/HomePage.vue"));
+  },
+  meta: {
+    headerClass: 'fixed'
+  }
+}, {
+  path: '/produkty',
   name: 'products.index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./routes/Products/Index.vue */ "./resources/js/routes/Products/Index.vue"));
+    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./routes/Products/Index.vue */ "./resources/js/routes/Products/Index.vue"));
   }
 }, {
   path: '/product/:slug',
   name: 'products.show',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./routes/Products/Show.vue */ "./resources/js/routes/Products/Show.vue"));
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./routes/Products/Show.vue */ "./resources/js/routes/Products/Show.vue"));
   }
 }, {
   path: '/checkout',
   name: 'order.checkout',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! ./routes/Order/Checkout.vue */ "./resources/js/routes/Order/Checkout.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! ./routes/Order/Checkout.vue */ "./resources/js/routes/Order/Checkout.vue"));
   }
 }, {
   path: '/summary',

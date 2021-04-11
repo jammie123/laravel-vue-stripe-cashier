@@ -2,7 +2,7 @@
 
         <div class="wrapper">
             <div class="wrapper">
-                <Header />  
+                <Header :class="$route.meta.headerClass" />  
                 <router-view></router-view>
             </div>
         </div>
