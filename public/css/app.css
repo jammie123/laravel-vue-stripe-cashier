@@ -4426,6 +4426,10 @@ select {
   background-image: linear-gradient(to top left, var(--tw-gradient-stops));
 }
 
+.bg-hero {
+  background-image: url('https://res.cloudinary.com/dayh1edx8/image/upload/w_1520,h_1000,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg');
+}
+
 .from-transparent {
   --tw-gradient-from: transparent;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -11417,7 +11421,7 @@ select {
 }
 
 .font-serif {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: Lora, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .font-mono {
@@ -11670,6 +11674,10 @@ select {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-half {
+  height: 50vh;
 }
 
 .text-xs {
@@ -14181,6 +14189,10 @@ select {
 
 .max-w-screen-2xl {
   max-width: 1536px;
+}
+
+.max-w-text-50 {
+  max-width: 50ch;
 }
 
 .min-h-0 {
@@ -27959,6 +27971,10 @@ select {
   grid-template-columns: none;
 }
 
+.grid-cols-main {
+  grid-template-columns: repeat(12, 1fr);
+}
+
 .auto-cols-auto {
   grid-auto-columns: auto;
 }
@@ -35113,6 +35129,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .sm\:bg-hero {
+    background-image: url('https://res.cloudinary.com/dayh1edx8/image/upload/w_1520,h_1000,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg');
+  }
+
   .sm\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -42104,7 +42124,7 @@ select {
   }
 
   .sm\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Lora, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .sm\:font-mono {
@@ -42357,6 +42377,10 @@ select {
 
   .sm\:h-screen {
     height: 100vh;
+  }
+
+  .sm\:h-half {
+    height: 50vh;
   }
 
   .sm\:text-xs {
@@ -44868,6 +44892,10 @@ select {
 
   .sm\:max-w-screen-2xl {
     max-width: 1536px;
+  }
+
+  .sm\:max-w-text-50 {
+    max-width: 50ch;
   }
 
   .sm\:min-h-0 {
@@ -58633,6 +58661,10 @@ select {
     grid-template-columns: none;
   }
 
+  .sm\:grid-cols-main {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   .sm\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -65722,6 +65754,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .md\:bg-hero {
+    background-image: url('https://res.cloudinary.com/dayh1edx8/image/upload/w_1520,h_1000,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg');
+  }
+
   .md\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -72713,7 +72749,7 @@ select {
   }
 
   .md\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Lora, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .md\:font-mono {
@@ -72966,6 +73002,10 @@ select {
 
   .md\:h-screen {
     height: 100vh;
+  }
+
+  .md\:h-half {
+    height: 50vh;
   }
 
   .md\:text-xs {
@@ -75477,6 +75517,10 @@ select {
 
   .md\:max-w-screen-2xl {
     max-width: 1536px;
+  }
+
+  .md\:max-w-text-50 {
+    max-width: 50ch;
   }
 
   .md\:min-h-0 {
@@ -89242,6 +89286,10 @@ select {
     grid-template-columns: none;
   }
 
+  .md\:grid-cols-main {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   .md\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -96331,6 +96379,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .lg\:bg-hero {
+    background-image: url('https://res.cloudinary.com/dayh1edx8/image/upload/w_1520,h_1000,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg');
+  }
+
   .lg\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -103322,7 +103374,7 @@ select {
   }
 
   .lg\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Lora, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .lg\:font-mono {
@@ -103575,6 +103627,10 @@ select {
 
   .lg\:h-screen {
     height: 100vh;
+  }
+
+  .lg\:h-half {
+    height: 50vh;
   }
 
   .lg\:text-xs {
@@ -106086,6 +106142,10 @@ select {
 
   .lg\:max-w-screen-2xl {
     max-width: 1536px;
+  }
+
+  .lg\:max-w-text-50 {
+    max-width: 50ch;
   }
 
   .lg\:min-h-0 {
@@ -119851,6 +119911,10 @@ select {
     grid-template-columns: none;
   }
 
+  .lg\:grid-cols-main {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   .lg\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -126940,6 +127004,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .xl\:bg-hero {
+    background-image: url('https://res.cloudinary.com/dayh1edx8/image/upload/w_1520,h_1000,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg');
+  }
+
   .xl\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -133931,7 +133999,7 @@ select {
   }
 
   .xl\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Lora, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .xl\:font-mono {
@@ -134184,6 +134252,10 @@ select {
 
   .xl\:h-screen {
     height: 100vh;
+  }
+
+  .xl\:h-half {
+    height: 50vh;
   }
 
   .xl\:text-xs {
@@ -136695,6 +136767,10 @@ select {
 
   .xl\:max-w-screen-2xl {
     max-width: 1536px;
+  }
+
+  .xl\:max-w-text-50 {
+    max-width: 50ch;
   }
 
   .xl\:min-h-0 {
@@ -150460,6 +150536,10 @@ select {
     grid-template-columns: none;
   }
 
+  .xl\:grid-cols-main {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   .xl\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -157549,6 +157629,10 @@ select {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .\32xl\:bg-hero {
+    background-image: url('https://res.cloudinary.com/dayh1edx8/image/upload/w_1520,h_1000,c_fill/v1617916872/kyle-mackie-MEnlQv-EQvY-unsplash_vwdynh.jpg');
+  }
+
   .\32xl\:from-transparent {
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -164540,7 +164624,7 @@ select {
   }
 
   .\32xl\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Lora, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .\32xl\:font-mono {
@@ -164793,6 +164877,10 @@ select {
 
   .\32xl\:h-screen {
     height: 100vh;
+  }
+
+  .\32xl\:h-half {
+    height: 50vh;
   }
 
   .\32xl\:text-xs {
@@ -167304,6 +167392,10 @@ select {
 
   .\32xl\:max-w-screen-2xl {
     max-width: 1536px;
+  }
+
+  .\32xl\:max-w-text-50 {
+    max-width: 50ch;
   }
 
   .\32xl\:min-h-0 {
@@ -181067,6 +181159,10 @@ select {
 
   .\32xl\:grid-cols-none {
     grid-template-columns: none;
+  }
+
+  .\32xl\:grid-cols-main {
+    grid-template-columns: repeat(12, 1fr);
   }
 
   .\32xl\:auto-cols-auto {

@@ -1,6 +1,6 @@
 <template>
     <header
-        class="text-gray-800 body-font w-full bg-gradient-to-b from-white to-transparent"
+        class="text-gray-800 body-font w-full"
         :class="{ fixed: fixed }"
     >
         <div

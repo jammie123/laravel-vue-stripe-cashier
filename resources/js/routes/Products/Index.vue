@@ -1,8 +1,8 @@
 <template>
-    <section class="text-gray-700 body-font">
-        <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-wrap -m-4" v-if="!products.length">
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full mb-4">
+    <section class="text-gray-700 body-font mt-32">
+        <div class="container mx-auto">
+            <div class="flex flex-wrap" v-if="!products.length">
+                <div class="">
                     <a class="block relative h-48 rounded overflow-hidden">
                         <img
                             alt="ecommerce"
@@ -25,47 +25,31 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-wrap -m-4" v-else>
+            <div class="flex flex-wrap" v-else>
                 <div
-                    class="lg:w-1/4 md:w-1/2 p-4 w-full mb-4"
+                    class="w-full mb-4"
                     v-for="product in products"
                     :key="product.id"
                 >
-                    <router-link
-                        class="block relative h-48 rounded overflow-hidden"
-                        :to="{
-                            name: 'products.show',
-                            params: { slug: product.slug }
-                        }"
-                    >
-                        <img
-                            alt="ecommerce"
-                            class="object-cover object-center w-full h-full block"
-                            :src="getThumbnail(product)"
-                        />
-                    </router-link>
-                    <div class="mt-4">
-                        <h3
-                            class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2"
-                            v-for="category in product.categories"
-                            v-text="category.name"
-                        ></h3>
-                        <h2
-                            class="text-gray-900 title-font text-lg font-medium"
-                            v-text="product.name"
-                        ></h2>
-                        <p
-                            class="mt-1"
-                            v-text="formatCurrency(product.price)"
-                        ></p>
-                    </div>
+                    <Product :product="product" :width="width" />
                 </div>
             </div>
         </div>
     </section>
 </template>
 <script>
+import Product from "../../components/Product.vue";
 export default {
+    name: "Products",
+    props: {
+        width: {
+            default: "w-1/2",
+            type: String
+        }
+    },
+    components: {
+        Product
+    },
     methods: {
         formatCurrency(amount) {
             return amount.toLocaleString("cs-CZ", {
@@ -74,12 +58,6 @@ export default {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             });
-        },
-
-        getThumbnail(product) {
-            if (product.image != null) {
-                return "images/" + JSON.parse(product.image)[0];
-            }
         }
     },
     computed: {
