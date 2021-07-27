@@ -1,0 +1,21 @@
+name: Laravel
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  laravel-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy to production
+      uses: appleboy/ssh-action@master
+      with:
+          username: "root"
+          host: "161.35.88.187"
+          password: "Fl1psorz!!!111"
+          script: 'cd /var/www/vuex/laravel-vue-stripe-cashier && ./deployer.sh'
