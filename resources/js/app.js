@@ -46,8 +46,10 @@ const store = new Vuex.Store({
             
             
         },
-        removeFromCart(state, index) {
-            state.cart.splice(index, 1);
+        removeFromCart(state, item) {
+            state.cart.splice(item, 1);
+            state.total = state.total - (item.quantity * item.price);
+            console.log(state);
         },
         updateOrder(state, order) {
             state.order = order;

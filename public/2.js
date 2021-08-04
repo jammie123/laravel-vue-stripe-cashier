@@ -152,69 +152,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -316,389 +253,273 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full" }, [
-    _c("div", { staticClass: "lg:w-2/3 w-full mx-auto mt-8 overflow-auto" }, [
-      _c(
-        "table",
-        { staticClass: "table-auto w-full text-left whitespace-no-wrap" },
-        [
-          _vm._m(0),
+  return this.$store.state.cart != ""
+    ? _c("div", { staticClass: "w-full px-4" }, [
+        _c(
+          "div",
+          { staticClass: "lg:w-2/3 w-full mx-auto mt-8 overflow-auto" },
+          [
+            _c(
+              "table",
+              { staticClass: "table-auto w-full text-left whitespace-no-wrap" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  [
+                    _vm._l(_vm.cart, function(item, index) {
+                      return _c("tr", { key: item.id }, [
+                        _c("td", {
+                          staticClass: "p-4",
+                          domProps: { textContent: _vm._s(item.name) }
+                        }),
+                        _vm._v(" "),
+                        _c("td", {
+                          staticClass: "p-4",
+                          domProps: { textContent: _vm._s(item.quantity) }
+                        }),
+                        _vm._v(" "),
+                        _c("td", {
+                          staticClass: "p-4",
+                          domProps: {
+                            textContent: _vm._s(_vm.cartLineTotal(item))
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "w-10 text-right" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "flex ml-auto text-sm text-black bg-yellow-400 border-0 py-2 px-2 focus:outline-none hover:bg-yellow-500 rounded",
+                              on: {
+                                click: function($event) {
+                                  return _vm.$store.commit(
+                                    "removeFromCart",
+                                    item
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Remove\n                        "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", { staticClass: "p-4 font-bold" }, [
+                        _vm._v("Total Amount")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", {
+                        staticClass: "p-4 font-bold",
+                        domProps: { textContent: _vm._s(_vm.cartQuantity) }
+                      }),
+                      _vm._v(" "),
+                      _c("td", {
+                        staticClass: "p-4 font-bold",
+                        domProps: { textContent: _vm._s(_vm.cartTotal) }
+                      }),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "w-10 text-right" })
+                    ])
+                  ],
+                  2
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "lg:w-2/3  w-full mx-auto mt-8" }, [
+          _c(
+            "div",
+            {
+              staticClass: "lg:flex flex-wrap flex-col lg:flex-row w-full mt-8"
+            },
+            [
+              _c("div", { staticClass: "lg:w-1/3 w-full lg:p-4 p-0" }, [
+                _c("div", { staticClass: "relative" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "leading-7 text-sm text-gray-600",
+                      attrs: { for: "first_name" }
+                    },
+                    [_vm._v("First Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.customer.first_name,
+                        expression: "customer.first_name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                    attrs: {
+                      type: "text",
+                      id: "first_name",
+                      name: "first_name",
+                      disabled: _vm.paymentProcessing
+                    },
+                    domProps: { value: _vm.customer.first_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.customer,
+                          "first_name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lg:w-1/3 w-full lg:p-4 p-0" }, [
+                _c("div", { staticClass: "relative" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "leading-7 text-sm text-gray-600",
+                      attrs: { for: "last_name" }
+                    },
+                    [_vm._v("Last Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.customer.last_name,
+                        expression: "customer.last_name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                    attrs: {
+                      type: "text",
+                      id: "last_name",
+                      name: "last_name",
+                      disabled: _vm.paymentProcessing
+                    },
+                    domProps: { value: _vm.customer.last_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.customer, "last_name", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lg:w-1/3 w-full lg:p-4 p-0" }, [
+                _c("div", { staticClass: "relative" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "leading-7 text-sm text-gray-600",
+                      attrs: { for: "email" }
+                    },
+                    [_vm._v("Email Address")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.customer.email,
+                        expression: "customer.email"
+                      }
+                    ],
+                    staticClass:
+                      "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
+                    attrs: {
+                      type: "email",
+                      id: "email",
+                      name: "email",
+                      disabled: _vm.paymentProcessing
+                    },
+                    domProps: { value: _vm.customer.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.customer, "email", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-full mt-8" }, [
+            _c("button", {
+              staticClass:
+                "flex mx-auto text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg w-full text-center",
+              attrs: { disabled: _vm.paymentProcessing },
+              domProps: {
+                textContent: _vm._s(
+                  _vm.paymentProcessing ? "Processing" : "Objednat"
+                )
+              },
+              on: { click: _vm.postOrder }
+            })
+          ])
+        ])
+      ])
+    : _c("div", [
+        _c("div", { staticClass: "p-8 lg:w-1/3 mx-auto" }, [
+          _c("h1", { staticClass: "text-4xl leading-tight font-serif" }, [
+            _vm._v("\n            Upps!!! Váš košík je zatím prázdný\n        ")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-xl pt-4 text-gray-700" }, [
+            _vm._v(
+              "\n            Hoďte si něco dobrého do košíku než to bude všechno pryč'...\n        "
+            )
+          ]),
           _vm._v(" "),
           _c(
-            "tbody",
+            "button",
+            {
+              staticClass:
+                "flex mt-12 text-center text-black bg-yellow-300 border-0 text-2xl py-4 px-6 focus:outline-none hover:bg-yellow-400 rounded-1xl w-full"
+            },
             [
-              _vm._l(_vm.cart, function(item, index) {
-                return _c("tr", { key: item.id }, [
-                  _c("td", {
-                    staticClass: "p-4",
-                    domProps: { textContent: _vm._s(item.name) }
-                  }),
-                  _vm._v(" "),
-                  _c("td", {
-                    staticClass: "p-4",
-                    domProps: { textContent: _vm._s(item.quantity) }
-                  }),
-                  _vm._v(" "),
-                  _c("td", {
-                    staticClass: "p-4",
-                    domProps: { textContent: _vm._s(_vm.cartLineTotal(item)) }
-                  }),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "w-10 text-right" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "flex ml-auto text-sm text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded",
-                        on: {
-                          click: function($event) {
-                            return _vm.$store.commit("removeFromCart", index)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Remove\n                        "
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", { staticClass: "p-4 font-bold" }, [
-                  _vm._v("Total Amount")
-                ]),
-                _vm._v(" "),
-                _c("td", {
-                  staticClass: "p-4 font-bold",
-                  domProps: { textContent: _vm._s(_vm.cartQuantity) }
-                }),
-                _vm._v(" "),
-                _c("td", {
-                  staticClass: "p-4 font-bold",
-                  domProps: { textContent: _vm._s(_vm.cartTotal) }
-                }),
-                _vm._v(" "),
-                _c("td", { staticClass: "w-10 text-right" })
-              ])
+              _c(
+                "router-link",
+                {
+                  staticClass: "text-center w-full",
+                  attrs: { to: { name: "home.index" } }
+                },
+                [_vm._v("\n                Hurá do nakupování\n            ")]
+              )
             ],
-            2
+            1
           )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "lg:w-2/3 w-full mx-auto mt-8" }, [
-      _c("div", { staticClass: "flex flex-wrap -mx-2 mt-8" }, [
-        _c("div", { staticClass: "p-2 w-1/3" }, [
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "label",
-              {
-                staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "first_name" }
-              },
-              [_vm._v("First Name")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customer.first_name,
-                  expression: "customer.first_name"
-                }
-              ],
-              staticClass:
-                "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-              attrs: {
-                type: "text",
-                id: "first_name",
-                name: "first_name",
-                disabled: _vm.paymentProcessing
-              },
-              domProps: { value: _vm.customer.first_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.customer, "first_name", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-2 w-1/3" }, [
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "label",
-              {
-                staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "last_name" }
-              },
-              [_vm._v("Last Name")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customer.last_name,
-                  expression: "customer.last_name"
-                }
-              ],
-              staticClass:
-                "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-              attrs: {
-                type: "text",
-                id: "last_name",
-                name: "last_name",
-                disabled: _vm.paymentProcessing
-              },
-              domProps: { value: _vm.customer.last_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.customer, "last_name", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-2 w-1/3" }, [
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "label",
-              {
-                staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "email" }
-              },
-              [_vm._v("Email Address")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customer.email,
-                  expression: "customer.email"
-                }
-              ],
-              staticClass:
-                "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-              attrs: {
-                type: "email",
-                id: "email",
-                name: "email",
-                disabled: _vm.paymentProcessing
-              },
-              domProps: { value: _vm.customer.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.customer, "email", $event.target.value)
-                }
-              }
-            })
-          ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex flex-wrap -mx-2 mt-4" }, [
-        _c("div", { staticClass: "p-2 w-1/3" }, [
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "label",
-              {
-                staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "address" }
-              },
-              [_vm._v("Street Address")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customer.address,
-                  expression: "customer.address"
-                }
-              ],
-              staticClass:
-                "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-              attrs: {
-                type: "text",
-                id: "address",
-                name: "address",
-                disabled: _vm.paymentProcessing
-              },
-              domProps: { value: _vm.customer.address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.customer, "address", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-2 w-1/3" }, [
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "label",
-              {
-                staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "city" }
-              },
-              [_vm._v("City")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customer.city,
-                  expression: "customer.city"
-                }
-              ],
-              staticClass:
-                "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-              attrs: {
-                type: "text",
-                id: "city",
-                name: "city",
-                disabled: _vm.paymentProcessing
-              },
-              domProps: { value: _vm.customer.city },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.customer, "city", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-2 w-1/6" }, [
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "label",
-              {
-                staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "state" }
-              },
-              [_vm._v("State")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customer.state,
-                  expression: "customer.state"
-                }
-              ],
-              staticClass:
-                "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-              attrs: {
-                type: "email",
-                id: "state",
-                name: "state",
-                disabled: _vm.paymentProcessing
-              },
-              domProps: { value: _vm.customer.state },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.customer, "state", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-2 w-1/6" }, [
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "label",
-              {
-                staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "zip_code" }
-              },
-              [_vm._v("Zip Code")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customer.zip_code,
-                  expression: "customer.zip_code"
-                }
-              ],
-              staticClass:
-                "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-              attrs: {
-                type: "email",
-                id: "zip_code",
-                name: "zip_code",
-                disabled: _vm.paymentProcessing
-              },
-              domProps: { value: _vm.customer.zip_code },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.customer, "zip_code", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-2 w-full" }, [
-        _c("button", {
-          staticClass:
-            "flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg",
-          attrs: { disabled: _vm.paymentProcessing },
-          domProps: {
-            textContent: _vm._s(
-              _vm.paymentProcessing ? "Processing" : "Pay Now"
-            )
-          },
-          on: { click: _vm.postOrder }
-        })
       ])
-    ])
-  ])
 }
 var staticRenderFns = [
   function() {
@@ -713,7 +534,7 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl"
           },
-          [_vm._v("\n                        Item\n                    ")]
+          [_vm._v("\n                        Položka\n                    ")]
         ),
         _vm._v(" "),
         _c(
@@ -722,7 +543,7 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200"
           },
-          [_vm._v("\n                        Quantity\n                    ")]
+          [_vm._v("\n                        Počet\n                    ")]
         ),
         _vm._v(" "),
         _c(
@@ -731,7 +552,7 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200"
           },
-          [_vm._v("\n                        Price\n                    ")]
+          [_vm._v("\n                        Cena\n                    ")]
         ),
         _vm._v(" "),
         _c(
@@ -740,29 +561,8 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200"
           },
-          [_vm._v("\n                        Actions\n                    ")]
+          [_vm._v("\n                        Akce\n                    ")]
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex flex-wrap -mx-2 mt-4" }, [
-      _c("div", { staticClass: "p-2 w-full" }, [
-        _c("div", { staticClass: "relative" }, [
-          _c(
-            "label",
-            {
-              staticClass: "leading-7 text-sm text-gray-600",
-              attrs: { for: "card-element" }
-            },
-            [_vm._v("Credit Card Info")]
-          ),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "card-element" } })
-        ])
       ])
     ])
   }

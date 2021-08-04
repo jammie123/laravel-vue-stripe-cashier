@@ -1,5 +1,5 @@
 <template>
-    <section class="text-gray-700 body-font mt-32">
+    <section class="text-gray-700 body-font mt-12">
         <div class="container mx-auto">
             <div class="flex flex-wrap" v-if="!products.length">
                 <div class="">
@@ -25,13 +25,13 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-wrap" v-else>
+            <div class="grid grid-cols-1 px-4 lg:px-0 lg:grid-cols-2 lg:gap-4" v-else>
                 <div
                     class="w-full mb-4"
                     v-for="product in products"
                     :key="product.id"
                 >
-                    <Product :product="product" :width="width" />
+                    <Product :product="product" :width="w-full" />
                 </div>
             </div>
         </div>

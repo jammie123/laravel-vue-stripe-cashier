@@ -1,10 +1,8 @@
 <template>
 
-        <div class="wrapper">
-            <div class="wrapper">
+        <div class="wrapper">      
                 <Header :class="$route.meta.headerClass" />  
                 <router-view></router-view>
-            </div>
         </div>
 
 </template>

@@ -3,9 +3,6 @@ module.exports = [
         path: '/',
         name: 'home.index',
         component: () => import('./routes/Page/HomePage.vue'),
-        meta: {
-            headerClass: 'fixed'
-       }
     },
     {
         path: '/produkty',

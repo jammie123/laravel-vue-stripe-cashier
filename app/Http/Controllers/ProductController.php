@@ -89,22 +89,14 @@ class ProductController extends Controller
             $fileNames[] = $imageName;
         }
 
-        dd($fileNames);
-        // $images = json_encode($fileNames);
-
-        // // Store $images image in DATABASE from HERE 
-        // Image::create(['images' => $images]);
-
-
-
 
         $product = new Product;
         $product->name = $request->name;
+        $product->slug = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->weight = $request->weight;
         $product->sku = $request->sku;
-        $product->create_date = Carbon::now();
         $product->save();
         return redirect()->route('products.index')
             ->with('success', 'Product created successfully.');

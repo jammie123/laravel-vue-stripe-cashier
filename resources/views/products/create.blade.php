@@ -5,17 +5,21 @@
         </h2>
     </x-slot>
 
+
+
     <div class="py-12 container mx-auto">
         <h1 class="text-3xl text-bold pb-16">Nový produkt</h1>
-        <form class="container mx-auto flex flex-col gap-4" action="{{ route('products.store') }}"
-            method="POST" enctype="multipart/form-data">
+        <form class=" container mx-auto flex flex-col gap-4" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <label>Obrázky produktu</label>
-            <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control">
+            <input type="file" name="image[]" accept="image/*" multiple="multiple" class="form-control">
+ 
+          
+
             <label>Název produktu</label>
             <input id="name" type="text" name="name">
             <label>Cena produktu</label>
-            <input id="prize" type="number" name="prize">
+            <input id="price" type="number" name="price">
             <label>Popisek</label>
             <textarea id="description" rows="3" name="description"></textarea>
             <label>Váha</label>
@@ -24,5 +28,7 @@
             <input id="sku" type="number" name="sku">
             <input type="submit" name="send" value="Submit">
         </form>
+        
     </div>
+
 </x-app-layout>

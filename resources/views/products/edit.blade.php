@@ -12,13 +12,17 @@
             @if ($product->image)
             @foreach(json_decode($product->image) as $value)
             <div class="col-md-2">
-                <img src="{{ asset('images/'.$value) }}" width="100">
+                <img src="{{ asset('images/'.$value) }}" width="300">
             </div>
             @endforeach
             @endif
 
             <label>Obrázky produktu</label>
-            <input type="file" name="image[]" accept="image/*" multiple="multiple" class="form-control">
+            <!-- <input type="file" name="image[]" accept="image/*" multiple="multiple" class="form-control"> -->
+
+
+
+
             <label>Název produktu</label>
             <input id="name" type="text" name="name" value={{ $product->name }}>
             <label>Cena produktu</label>

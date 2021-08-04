@@ -45,7 +45,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
@@ -55,22 +54,37 @@ __webpack_require__.r(__webpack_exports__);
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
       });
-    },
-    getThumbnail: function getThumbnail(product) {
-      if (product.image != null) {
-        return "../images/" + JSON.parse(product.image)[0];
-      }
-    }
+    } // getThumbnail(product) {
+    //     console.log(JSON.parse(product.image));
+    //     if (product.image != null) {
+    //         return "../images/" + JSON.parse(product.image);
+    //     }
+    // }
+
   },
   computed: {
     products: function products() {
       return this.$store.state.products;
     },
-    product: function product() {
+    images: function images() {
       var _this = this;
 
-      return this.products.find(function (product) {
+      var _this$products$find = this.products.find(function (product) {
         return product.slug === _this.$route.params.slug;
+      }),
+          image = _this$products$find.image;
+
+      console.log(image);
+      var parsedImages = JSON.parse(image);
+      return parsedImages.map(function (item) {
+        return "../images/" + item;
+      });
+    },
+    product: function product() {
+      var _this2 = this;
+
+      return this.products.find(function (product) {
+        return product.slug === _this2.$route.params.slug;
       });
     }
   }
@@ -98,77 +112,73 @@ var render = function() {
         "section",
         { staticClass: "text-gray-700 body-font overflow-hidden" },
         [
-          _c("div", { staticClass: "container px-12 py-24 mx-auto" }, [
+          _c("div", { staticClass: "container mx-auto px-2" }, [
             _c("div", { staticClass: "lg:w-5/5 mx-auto flex flex-wrap" }, [
-              _c("img", {
-                staticClass:
-                  "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded",
-                attrs: { alt: "ecommerce", src: _vm.getThumbnail(_vm.product) }
-              }),
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "grid gap-2 grid-flow-col auto-cols-max overflow-auto mx-auto w-full"
+                },
+                _vm._l(_vm.images, function(item) {
+                  return _c("div", { key: item }, [
+                    _c("img", {
+                      staticClass: "w-full h-80 object-cover",
+                      attrs: { alt: "ecommerce", src: item }
+                    })
+                  ])
+                }),
+                0
+              ),
               _vm._v(" "),
               _c(
                 "div",
                 {
-                  staticClass: "lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0"
+                  staticClass:
+                    "lg:w-1/2 ml-auto mr-auto w-full lg:pl-10 lg:py-6 mt-6 lg:mt-8"
                 },
                 [
-                  _vm._l(_vm.product.categories, function(category) {
-                    return _c("h2", {
-                      staticClass:
-                        "text-sm title-font text-gray-500 tracking-widest uppercase inline-block mr-2",
-                      domProps: { textContent: _vm._s(category.name) }
-                    })
-                  }),
-                  _vm._v(" "),
                   _c("h1", {
                     staticClass:
-                      "text-gray-900 text-3xl title-font font-medium mb-2",
+                      "text-gray-900 text-4xl title-font font-medium mb-2",
                     domProps: { textContent: _vm._s(_vm.product.name) }
                   }),
                   _vm._v(" "),
                   _c("p", {
-                    staticClass: "leading-relaxed",
+                    staticClass: "leading-relaxed text-xl",
                     domProps: { innerHTML: _vm._s(_vm.product.description) }
                   }),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
+                  _c("div", { staticClass: "flex flex-col" }, [
+                    _c("span", {
                       staticClass:
-                        "flex mt-6 p-6    items-center border-gray-200 border bg-gray-50 rounded-lg"
-                    },
-                    [
-                      _c("span", {
+                        "title-font font-medium text-3xl text-gray-900 py-8",
+                      domProps: {
+                        textContent: _vm._s(
+                          _vm.formatCurrency(_vm.product.price)
+                        )
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
                         staticClass:
-                          "title-font font-medium text-2xl text-gray-900",
-                        domProps: {
-                          textContent: _vm._s(
-                            _vm.formatCurrency(_vm.product.price)
-                          )
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded",
-                          on: {
-                            click: function($event) {
-                              return _vm.$store.commit("addToCart", _vm.product)
-                            }
+                          "flex mt-4 text-center text-black bg-yellow-300 border-0 text-2xl py-4 px-6 focus:outline-none hover:bg-yellow-400 rounded-1xl",
+                        on: {
+                          click: function($event) {
+                            return _vm.$store.commit("addToCart", _vm.product)
                           }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Přidat do košíku\n                    "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ],
-                2
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "w-full text-center" }, [
+                          _vm._v("Přidat do košíku")
+                        ])
+                      ]
+                    )
+                  ])
+                ]
               )
             ])
           ])

@@ -91,31 +91,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {},
@@ -226,7 +201,7 @@ var render = function() {
     "router-link",
     {
       staticClass:
-        "block relative rounded overflow-hidden transform transition duration-300 hover:translate-y-2",
+        "block relative rounded overflow-hidden transform transition duration-300 hover:translate-y-2 h-64 lg:h-96 rounded-2xl",
       class: _vm.width,
       attrs: {
         to: {
@@ -236,20 +211,26 @@ var render = function() {
       }
     },
     [
-      _c("img", {
+      _c("div", {
         staticClass:
-          "object-cover object-center w-full h-full block hover:shadow-lg",
-        attrs: { alt: "ecommerce", src: _vm.getThumbnail(_vm.product) }
+          "object-cover object-center w-full h-full block hover:shadow-lg bg-cover",
+        style: {
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0) 64%, rgba(0,0,0,0.3699054621848739) 100%), url(" +
+            _vm.getThumbnail(_vm.product) +
+            ")",
+          backgroundPosition: ("50%", "50%")
+        }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "mt-4" }, [
+      _c("div", { staticClass: "mt-4 absolute bottom-5 left-5" }, [
         _c("h2", {
-          staticClass: "text-black title-font text-2xl font-bold",
+          staticClass: "text-white title-font text-4xl font-bold",
           domProps: { textContent: _vm._s(_vm.product.name) }
         }),
         _vm._v(" "),
         _c("p", {
-          staticClass: "text-gray-900 title-font text-xl font-regular mt-2",
+          staticClass: "text-white title-font text-2xl font-regular mt-2",
           domProps: {
             textContent: _vm._s(_vm.formatCurrency(_vm.product.price))
           }
@@ -280,84 +261,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full m-auto " }, [
-    _c("img", { staticClass: "w-screen h-half bg-no-repeat bg-cover bg-hero" }),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "container grid grid-flow-row grid-cols-main m-auto" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-start-3 col-span-8 justify-center " },
-          [
-            _c(
-              "h2",
-              { staticClass: "text-4xl mt-32 leading-tight font-serif" },
-              [_vm._v("Naše produkty")]
-            ),
-            _vm._v(" "),
-            _c("Products", { attrs: { width: "w-1/2" } }),
-            _vm._v(" "),
-            _c(
-              "h3",
-              {
-                staticClass:
-                  "text-lg font-bold mb-2 leading-tight uppercase text-gray-600 mt-32"
-              },
-              [_vm._v("\n                Náš přístup\n            ")]
-            ),
-            _vm._v(" "),
-            _vm._m(1)
-          ],
-          1
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-start-3 col-span-8 justify-center" }, [
+  return _c(
+    "div",
+    { staticClass: "container m-auto " },
+    [
+      _c("h1", { staticClass: "text-7xl font-serif w-3/4 leading-normal" }, [
+        _vm._v("Bedýnky z rodinný farmy")
+      ]),
+      _vm._v(" "),
       _c(
-        "h1",
-        { staticClass: "text-7xl mt-32 mb-16 leading-tight font-serif" },
+        "p",
+        { staticClass: "text-2xl leading-relaxed w-3/4 pt-8 text-gray-500" },
         [
           _vm._v(
-            "\n                Ochutnejte hovězí maso z Vysočiny\n            "
+            "Na kraji Vysočiny máme vlastní pastviny, kde chováme převážně český strakatý skot Anguse, Šarolé a Lumousiny. Maso necháváme hezky uzrát, takže je perfektně připravené na finální úpravu"
           )
         ]
       ),
       _vm._v(" "),
-      _c(
-        "p",
-        { staticClass: "text-2xl text-gray-600 leading-relaxed max-w-text-50" },
-        [
-          _vm._v(
-            "\n                Na kraji Vysočiny máme vlastní pastviny, kde chováme\n                převážně český strakatý skot. Maso necháváme hezky uzrát,\n                takže je perfektně připravené na finální úpravu.\n            "
-          )
-        ]
-      ),
+      _c("Products", { attrs: { width: "w-full" } }),
       _vm._v(" "),
       _c(
-        "p",
+        "h3",
         {
           staticClass:
-            "text-2xl text-gray-600 leading-relaxed mt-4 max-w-text-50"
+            "text-lg font-bold mb-2 leading-tight uppercase text-gray-600 mt-32 px-4 lg:px-0 "
         },
-        [
-          _vm._v(
-            "\n                 Objednáte si jednoduše skrze náš formulář nebo nám můžete\n                 napsat na email, zavolat a kontaktovat skrze facebook. \n            "
-          )
-        ]
-      )
-    ])
-  },
+        [_vm._v("\n            Náš přístup\n        ")]
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -366,24 +304,24 @@ var staticRenderFns = [
       "ul",
       {
         staticClass:
-          "text-xl text-gray-700 list-none flex gap-3 leading-relaxed"
+          "text-xl text-gray-700 list-none px-4 lg:px-0 grid grid-cols-1 lg:gap-3 leading-relaxed w-1/2"
       },
       [
         _c("li", { staticClass: "py-1" }, [
           _vm._v(
-            "\n                    Chováme šlechtěná hovězí plemena na našich vlastních\n                    pastvách.\n                "
+            "\n                Chováme šlechtěná hovězí plemena na našich vlastních pastvách.\n            "
           )
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "py-1" }, [
           _vm._v(
-            "\n                    Přirozený chov dobytka je naší fylozofií a v souladu s\n                    ekologickým zemědělství.\n                "
+            "\n                Přirozený chov dobytka je naší fylozofií a v souladu s\n                ekologickým zemědělství.\n            "
           )
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "py-1" }, [
           _vm._v(
-            "\n                    Dbáme na vyzrání, takže při dinální přípravě bude maso\n                    krásně křehké.\n                "
+            "\n                Dbáme na vyzrání, takže při dinální přípravě bude maso krásně\n                křehké.\n            "
           )
         ]),
         _vm._v(" "),
@@ -415,20 +353,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "text-gray-700 body-font mt-32" }, [
+  return _c("section", { staticClass: "text-gray-700 body-font mt-12" }, [
     _c("div", { staticClass: "container mx-auto" }, [
       !_vm.products.length
         ? _c("div", { staticClass: "flex flex-wrap" }, [_vm._m(0)])
         : _c(
             "div",
-            { staticClass: "flex flex-wrap" },
+            {
+              staticClass:
+                "grid grid-cols-1 px-4 lg:px-0 lg:grid-cols-2 lg:gap-4"
+            },
             _vm._l(_vm.products, function(product) {
               return _c(
                 "div",
                 { key: product.id, staticClass: "w-full mb-4" },
                 [
                   _c("Product", {
-                    attrs: { product: product, width: _vm.width }
+                    attrs: { product: product, width: _vm.w - _vm.full }
                   })
                 ],
                 1
