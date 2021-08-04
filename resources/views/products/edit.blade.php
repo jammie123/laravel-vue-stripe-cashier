@@ -18,7 +18,7 @@
             @endif
 
             <label>Obrázky produktu</label>
-            <!-- <input type="file" name="image[]" accept="image/*" multiple="multiple" class="form-control"> -->
+            <input type="file" name="image[]" accept="image/*" multiple="multiple" class="form-control">
 
 
 
