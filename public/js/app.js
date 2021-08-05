@@ -2100,6 +2100,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
@@ -37823,28 +37844,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "header",
-    {
-      staticClass: "text-gray-800 body-font w-full",
-      class: { fixed: _vm.fixed }
-    },
+    { staticClass: "relative container mx-auto text-gray-800 body-font " },
     [
       _c(
         "div",
         {
           staticClass:
-            "mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+            "relative mx-auto flex flex-col flex-wrap lg:mt-4 lg:p-0 p-5 md:flex-row items-start"
         },
         [
           _c(
             "a",
-            {
-              staticClass:
-                "flex title-font font-medium items-center mb-4 md:mb-0"
-            },
+            { staticClass: "flex title-font font-medium items-center md:mb-0" },
             [
               _c(
                 "span",
-                { staticClass: "ml-3 text-xl" },
+                { staticClass: "text-xl" },
                 [
                   _c("router-link", { attrs: { to: { name: "home.index" } } }, [
                     _vm._v(
@@ -37861,47 +37876,83 @@ var render = function() {
             "nav",
             {
               staticClass:
-                "md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400\tflex flex-wrap items-center text-base justify-center"
+                "md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-col lg:flex-row flex-wrap  text-base align-baseline"
             },
             [
               _c(
                 "router-link",
                 {
-                  staticClass: "mr-5 hover:text-gray-900",
+                  staticClass: "mr-5 hover:text-gray-900 ",
                   attrs: { to: { name: "products.index" } }
                 },
                 [_vm._v("\n                Produkty\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "mr-5 hover:text-gray-900 ",
+                  attrs: { to: { name: "products.index" } }
+                },
+                [_vm._v("\n                Kontakt\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "mr-5 hover:text-gray-900 ",
+                  attrs: { to: { name: "products.index" } }
+                },
+                [_vm._v("\n                Ceník\n            ")]
               )
             ],
             1
-          ),
-          _vm._v(" "),
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        {
+          staticClass: "absolute right-4 top-4",
+          attrs: { to: { name: "order.checkout" } }
+        },
+        [
           _c(
-            "router-link",
+            "svg",
             {
-              staticClass:
-                "inline-flex items-center bg-gray-600 text-white border-0 py-2 px-3 focus:outline-none hover:bg-gray-700 rounded-full text-base mt-4 md:mt-0",
-              attrs: { to: { name: "order.checkout" } }
+              attrs: {
+                width: "32",
+                height: "32",
+                viewBox: "0 0 32 32",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg"
+              }
             },
             [
-              _vm._v("Košík\n            "),
-              _c("span", {
-                staticClass: "inline-block ml-1 text-white",
-                domProps: {
-                  textContent: _vm._s(
-                    (_vm.items == 0 ? "je prázdný" : "") +
-                      " " +
-                      "" +
-                      (_vm.total == 0 ? "" : _vm.getCurrency(_vm.total))
-                  )
+              _c("path", {
+                attrs: {
+                  d:
+                    "M25.6 25.6C23.824 25.6 22.4 27.024 22.4 28.8C22.4 29.6487 22.7371 30.4626 23.3373 31.0627C23.9374 31.6629 24.7513 32 25.6 32C26.4487 32 27.2626 31.6629 27.8627 31.0627C28.4629 30.4626 28.8 29.6487 28.8 28.8C28.8 27.024 27.36 25.6 25.6 25.6ZM0 0V3.2H3.2L8.96 15.344L6.784 19.264C6.544 19.712 6.4 20.24 6.4 20.8C6.4 21.6487 6.73714 22.4626 7.33726 23.0627C7.93737 23.6629 8.75131 24 9.6 24H28.8V20.8H10.272C10.1659 20.8 10.0642 20.7579 9.98916 20.6828C9.91414 20.6078 9.872 20.5061 9.872 20.4C9.872 20.32 9.888 20.256 9.92 20.208L11.36 17.6H23.28C24.48 17.6 25.536 16.928 26.08 15.952L31.808 5.6C31.92 5.344 32 5.072 32 4.8C32 4.37565 31.8314 3.96869 31.5314 3.66863C31.2313 3.36857 30.8243 3.2 30.4 3.2H6.736L5.232 0H0ZM9.6 25.6C7.824 25.6 6.4 27.024 6.4 28.8C6.4 29.6487 6.73714 30.4626 7.33726 31.0627C7.93737 31.6629 8.75131 32 9.6 32C10.4487 32 11.2626 31.6629 11.8627 31.0627C12.4629 30.4626 12.8 29.6487 12.8 28.8C12.8 27.024 11.36 25.6 9.6 25.6Z",
+                  fill: "black"
                 }
               })
             ]
-          )
-        ],
-        1
+          ),
+          _vm._v(" "),
+          _vm.items != 0
+            ? _c("span", {
+                staticClass:
+                  "absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center",
+                domProps: {
+                  textContent: _vm._s((_vm.items == 0 ? "" : _vm.items) + " ")
+                }
+              })
+            : _vm._e()
+        ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []

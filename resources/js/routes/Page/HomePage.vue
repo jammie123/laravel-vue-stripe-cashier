@@ -1,14 +1,26 @@
 <template>
-    <div class="container m-auto ">
-        <h1 class="text-7xl font-serif w-3/4 leading-normal">Bedýnky z rodinný farmy</h1>
-<p class="text-2xl leading-relaxed w-3/4 pt-8 text-gray-500">Na kraji Vysočiny máme vlastní pastviny, kde chováme převážně český strakatý skot Anguse, Šarolé a Lumousiny. Maso necháváme hezky uzrát, takže je perfektně připravené na finální úpravu</p>
+    <div class="container m-auto">
+        <h1
+            class="lg:text-7xl text-3xl font-serif w-3/4 leading-normal px-4 lg:px-0 mt-12 lg:mt-32"
+        >
+            Bedýnky z rodinný farmy
+        </h1>
+        <p
+            class="lg:text-2xl text-xl leading-relaxed pt-8 text-gray-500 px-4 lg:px-0"
+        >
+            Na kraji Vysočiny máme vlastní pastviny, kde chováme převážně český
+            strakatý skot Anguse, Šarolé a Lumousiny. Maso necháváme hezky
+            uzrát, takže je perfektně připravené na finální úpravu
+        </p>
         <Products width="w-full" />
         <h3
             class="text-lg font-bold mb-2 leading-tight uppercase text-gray-600 mt-32 px-4 lg:px-0 "
         >
             Náš přístup
         </h3>
-        <ul class="text-xl text-gray-700 list-none px-4 lg:px-0 grid grid-cols-1 lg:gap-3 leading-relaxed w-1/2">
+        <ul
+            class="text-xl text-gray-700 list-none px-4 lg:px-0 grid grid-cols-1 lg:gap-3 leading-relaxed w-1/2"
+        >
             <li class="py-1">
                 Chováme šlechtěná hovězí plemena na našich vlastních pastvách.
             </li>

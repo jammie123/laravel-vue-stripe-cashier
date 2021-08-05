@@ -91,6 +91,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {},
@@ -263,18 +275,26 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container m-auto " },
+    { staticClass: "container m-auto" },
     [
-      _c("h1", { staticClass: "text-7xl font-serif w-3/4 leading-normal" }, [
-        _vm._v("Bedýnky z rodinný farmy")
-      ]),
+      _c(
+        "h1",
+        {
+          staticClass:
+            "lg:text-7xl text-3xl font-serif w-3/4 leading-normal px-4 lg:px-0 mt-12 lg:mt-32"
+        },
+        [_vm._v("\n        Bedýnky z rodinný farmy\n    ")]
+      ),
       _vm._v(" "),
       _c(
         "p",
-        { staticClass: "text-2xl leading-relaxed w-3/4 pt-8 text-gray-500" },
+        {
+          staticClass:
+            "lg:text-2xl text-xl leading-relaxed pt-8 text-gray-500 px-4 lg:px-0"
+        },
         [
           _vm._v(
-            "Na kraji Vysočiny máme vlastní pastviny, kde chováme převážně český strakatý skot Anguse, Šarolé a Lumousiny. Maso necháváme hezky uzrát, takže je perfektně připravené na finální úpravu"
+            "\n        Na kraji Vysočiny máme vlastní pastviny, kde chováme převážně český\n        strakatý skot Anguse, Šarolé a Lumousiny. Maso necháváme hezky\n        uzrát, takže je perfektně připravené na finální úpravu\n    "
           )
         ]
       ),
@@ -287,7 +307,7 @@ var render = function() {
           staticClass:
             "text-lg font-bold mb-2 leading-tight uppercase text-gray-600 mt-32 px-4 lg:px-0 "
         },
-        [_vm._v("\n            Náš přístup\n        ")]
+        [_vm._v("\n        Náš přístup\n    ")]
       ),
       _vm._v(" "),
       _vm._m(0)
@@ -309,19 +329,19 @@ var staticRenderFns = [
       [
         _c("li", { staticClass: "py-1" }, [
           _vm._v(
-            "\n                Chováme šlechtěná hovězí plemena na našich vlastních pastvách.\n            "
+            "\n            Chováme šlechtěná hovězí plemena na našich vlastních pastvách.\n        "
           )
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "py-1" }, [
           _vm._v(
-            "\n                Přirozený chov dobytka je naší fylozofií a v souladu s\n                ekologickým zemědělství.\n            "
+            "\n            Přirozený chov dobytka je naší fylozofií a v souladu s\n            ekologickým zemědělství.\n        "
           )
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "py-1" }, [
           _vm._v(
-            "\n                Dbáme na vyzrání, takže při dinální přípravě bude maso krásně\n                křehké.\n            "
+            "\n            Dbáme na vyzrání, takže při dinální přípravě bude maso krásně\n            křehké.\n        "
           )
         ]),
         _vm._v(" "),
