@@ -11,7 +11,10 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: "history",
-    routes: require("./routes.js")
+    routes: require("./routes.js"),
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 });
 
 const store = new Vuex.Store({

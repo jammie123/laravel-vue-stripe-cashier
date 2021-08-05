@@ -24,6 +24,9 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::get('/pokus', [ProductController::class, 'pokus']);
+Route::get('/sayhello', function() {
+    return phpinfo();
+});
 Route::post('/upload', [FileUploadController::class, 'storeUploads']);
 
 Route::any('/{any}', function() {
