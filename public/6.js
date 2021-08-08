@@ -48,36 +48,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {},
@@ -104,44 +74,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full m-auto " }, [
-    _c("img", {
-      staticClass: "w-screen h-screen bg-no-repeat bg-cover bg-hero"
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "grid grid-flow-row grid-cols-main m-auto" }, [
+  return _c(
+    "div",
+    { staticClass: "container m-auto" },
+    [
       _c(
-        "div",
-        { staticClass: "col-start-4 col-end-5 h-screen justify-center" },
-        [
-          _c(
-            "h1",
-            { staticClass: "text-7xl mt-16 mb-8 leading-tight font-serif" },
-            [
-              _vm._v(
-                "\n            Ochutnejte hovězí maso z Vysočiny\n        "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-2xl text-gray-600 leading-relaxed" }, [
-            _vm._v(
-              "\n            Na kraji Vysočiny máme vlastní pastviny, kde chováme převážně český\n            strakatý skot. Maso necháváme hezky uzrát, takže je perfektně\n            připravené na finální úpravu.\n        "
-            )
-          ]),
-          _vm._v(" "),
-          _c("Products")
-        ],
-        1
+        "h1",
+        {
+          staticClass:
+            "lg:text-7xl text-3xl font-serif w-3/4 leading-normal px-4 lg:px-0 mt-12 lg:mt-32"
+        },
+        [_vm._v("\n        Bedýnky z rodinný farmy\n    ")]
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _c(
+        "p",
+        {
+          staticClass:
+            "lg:text-2xl text-xl leading-relaxed pt-8 text-gray-500 px-4 lg:px-0"
+        },
+        [
+          _vm._v(
+            "\n        Na kraji Vysočiny máme vlastní pastviny, kde chováme převážně český\n        strakatý skot Anguse, Šarolé a Lumousiny. Maso necháváme hezky\n        uzrát, takže je perfektně připravené na finální úpravu\n    "
+          )
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(1),
+      _c("Products", { attrs: { width: "w-full" } }),
       _vm._v(" "),
-      _vm._m(2)
-    ])
-  ])
+      _c(
+        "h3",
+        {
+          staticClass:
+            "text-lg font-bold mb-2 leading-tight uppercase text-gray-600 mt-32 px-4 lg:px-0 "
+        },
+        [_vm._v("\n        Náš přístup\n    ")]
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -149,157 +122,33 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
-      { staticClass: "col-start-4 col-end-5 h-screen justify-center" },
+      "ul",
+      {
+        staticClass:
+          "text-xl text-gray-700 list-none px-4 lg:px-0 grid grid-cols-1 lg:gap-3 leading-relaxed w-1/2"
+      },
       [
-        _c("h3", { staticClass: "text-4xl mb-4 mt-16" }, [
-          _vm._v("Jak to funguje")
-        ]),
-        _vm._v(" "),
-        _c(
-          "ul",
-          {
-            staticClass: "text-xl  text-gray-600 list-outside list-disc pl-7 "
-          },
-          [
-            _c("li", { staticClass: "py-1 text-2xl leading-relaxed" }, [
-              _vm._v("Na webu nebo emailem zveřejňujeme porážky.")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "py-1 text-2xl leading-relaxed" }, [
-              _vm._v(
-                "\n                Prostřednictvím formuláře, emailu či telefoního kontaktnu můžete\n                provést objednávku.\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "py-1 text-2xl leading-relaxed" }, [
-              _vm._v(
-                "\n                Až bude zboží dostupné informujeme Vás a zboží budete mít u nás\n                v obchodě.\n            "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("h3", { staticClass: "text-4xl mb-4 mt-8" }, [
-          _vm._v("Náš přístup")
-        ]),
-        _vm._v(" "),
-        _c(
-          "ul",
-          { staticClass: "text-xl text-gray-700 list-outside list-disc pl-7" },
-          [
-            _c("li", { staticClass: "py-1" }, [
-              _vm._v(
-                "\n                Chováme šlechtěná hovězí plemena na našich vlastních pastvách.\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "py-1" }, [
-              _vm._v(
-                "\n                Přirozený chov dobytka je naší fylozofií a v souladu s\n                ekologickým zemědělství.\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "py-1" }, [
-              _vm._v(
-                "\n                Dbáme na vyzrání, takže při dinální přípravě bude maso krásně\n                křehké.\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "py-1" }, [
-              _vm._v("Garantujeme původ masa s rodokmenem.")
-            ])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex flex-wrap my-16 col-span-8" }, [
-      _c("img", {
-        staticClass: "w-1/3 border-white border-4",
-        attrs: {
-          src:
-            "https://res.cloudinary.com/dayh1edx8/image/upload/w_700,h_400,c_fill,g_auto/v1617917703/foceni/_DSC3606_rfeynz.jpg"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "w-1/3 border-white border-4",
-        attrs: {
-          src:
-            "https://res.cloudinary.com/dayh1edx8/image/upload/w_700,h_400,c_fill,g_auto/v1617917707/foceni/_DSC3572_hx3rju.jpg"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "w-1/3 border-white border-4",
-        attrs: {
-          src:
-            "https://res.cloudinary.com/dayh1edx8/image/upload/w_700,h_400,c_fill,g_auto/v1617917690/foceni/_DSC3620_at7rva.jpg"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "w-1/3 border-white border-4",
-        attrs: {
-          src:
-            "https://res.cloudinary.com/dayh1edx8/image/upload/w_700,h_400,c_fill,g_auto/v1617917676/foceni/_DSC3580_wmi4ip.jpg"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "w-1/3 border-white border-4",
-        attrs: {
-          src:
-            "https://res.cloudinary.com/dayh1edx8/image/upload/w_700,h_400,c_fill,g_auto/v1617917674/foceni/_DSC3654_x61vc3.jpg"
-        }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "w-1/3 border-white border-4",
-        attrs: {
-          src:
-            "https://res.cloudinary.com/dayh1edx8/image/upload/w_700,h_400,c_fill,g_auto/v1617917710/foceni/_DSC3701_vbnuyw.jpg"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "bg-gray-100 p-8 rounded-md my-16 col-start-3 col-end-7" },
-      [
-        _c("h3", { staticClass: "text-3xl mb-4" }, [
-          _vm._v("Nenechte si ujít...")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-xl text-gray-700" }, [
+        _c("li", { staticClass: "py-1" }, [
           _vm._v(
-            "\n                Chcete vědět o porážkách a našich výrobcích ? Zadejte email a\n                budeme Vás infomovat.\n            "
+            "\n            Chováme šlechtěná hovězí plemena na našich vlastních pastvách.\n        "
           )
         ]),
         _vm._v(" "),
-        _c("input", {
-          staticClass:
-            "border w-full border-gray-300 rounded-md h-12 bg-white my-4 px-2",
-          attrs: { placeholder: "Zadejte Váš email" }
-        }),
+        _c("li", { staticClass: "py-1" }, [
+          _vm._v(
+            "\n            Přirozený chov dobytka je naší fylozofií a v souladu s\n            ekologickým zemědělství.\n        "
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "border w-full border-blue-900 rounded-md h-12 bg-blue-800 text-white px-2"
-          },
-          [_vm._v("Odeslat")]
-        )
+        _c("li", { staticClass: "py-1" }, [
+          _vm._v(
+            "\n            Dbáme na vyzrání, takže při dinální přípravě bude maso krásně\n            křehké.\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "py-1" }, [
+          _vm._v("Garantujeme původ masa s rodokmenem.")
+        ])
       ]
     )
   }

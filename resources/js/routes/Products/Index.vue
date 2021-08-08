@@ -25,13 +25,18 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 px-4 lg:px-0 lg:grid-cols-2 lg:gap-4" v-else>
+            <div
+                class="grid grid-cols-1 px-4 lg:px-0 lg:grid-cols-2 lg:gap-4"
+                v-else
+            >
                 <div
                     class="w-full mb-4"
                     v-for="product in products"
+               
                     :key="product.id"
                 >
-                    <Product :product="product" :width="w-full" />
+                    <Product :product="product"  />
+                    <!-- <ProductSkeleton :product="product" :width="w-full" v-if="isloading" /> -->
                 </div>
             </div>
         </div>
@@ -39,8 +44,14 @@
 </template>
 <script>
 import Product from "../../components/Product.vue";
+import ProductSkeleton from "../../components/ProductSkeleton.vue";
 export default {
     name: "Products",
+    data() {
+        return {
+            loading: true
+        };
+    },
     props: {
         width: {
             default: "w-1/2",
@@ -48,7 +59,8 @@ export default {
         }
     },
     components: {
-        Product
+        Product,
+        // ProductSkeleton
     },
     methods: {
         formatCurrency(amount) {
@@ -62,7 +74,12 @@ export default {
     },
     computed: {
         products() {
-            return this.$store.state.products;
+            
+                return this.$store.state.products;
+          
+        },
+        isloading() {
+            return this.$store.state.isloading;
         }
     }
 };

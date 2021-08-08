@@ -2,7 +2,7 @@
     <section class="text-gray-700 body-font overflow-hidden" v-if="product">
         <div class="container mx-auto px-2">
             <div class="lg:w-5/5 mx-auto flex flex-wrap">
-            <ul class="grid gap-2 grid-flow-col auto-cols-max overflow-auto mx-auto w-full">
+            <ul class="grid gap-2 grid-flow-col auto-cols-max lg:grid-cols-3 overflow-auto mx-auto w-full">
                 <div v-for="item in images" :key="item" class="">
                     <img
                         alt="ecommerce"
@@ -11,6 +11,8 @@
                     />
                 </div>
             </ul>
+
+
                 <div class="lg:w-1/2 ml-auto mr-auto w-full lg:pl-10 lg:py-6 mt-6 lg:mt-8">
                     <h1
                         class="text-gray-900 text-4xl title-font font-medium mb-2"

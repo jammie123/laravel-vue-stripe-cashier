@@ -44,16 +44,14 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $user = User::firstOrCreate(["email" => $request->email]);
+        $user = User::firstOrCreate(["email" => $request->email], [
+            'name' => $request->name
+        ]);
         $order = new Order();
-
-
-
-
         $order->transaction_id = Str::random(16);
-        $order->user()->associate($user);
         $cart = collect(json_decode($request->cart, true));
         $order->total = $this->getTotalPrice($cart);
+        $order->user()->associate($user);
         $order->save();
         $this->getCartItems($cart, $order);
         

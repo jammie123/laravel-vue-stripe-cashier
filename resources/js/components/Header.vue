@@ -1,7 +1,7 @@
 <template>
     <header class="relative container mx-auto text-gray-800 body-font ">
         <div
-            class="relative mx-auto flex flex-col flex-wrap lg:mt-4 lg:p-0 p-5 md:flex-row items-start"
+            class="relative mx-auto flex flex-col flex-wrap lg:mt-4 lg:mb-12 lg:p-0 p-5 md:flex-row items-start"
         >
             <a class="flex title-font font-medium items-center md:mb-0">
                 <span class="text-xl">
@@ -76,9 +76,7 @@ export default {
         }
     },
     data() {
-        return {
-            fixed: false
-        };
+        return {};
     },
     computed: {
         ...mapGetters({

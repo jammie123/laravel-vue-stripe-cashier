@@ -60,26 +60,23 @@ export default {
     },
     computed: {
         order() {
+            console.log(this.$store.state.order);
             return this.$store.state.order;
         },
         orderQuantity() {
-            return this.$store.state.order.products.reduce(
-                (acc, item) => acc + item.pivot.quantity,
-                0
-            );
+            console.log(this.$store.state.order);
+
         },
         orderTotal() {
-            let amount = this.$store.state.order.products.reduce(
-                (acc, item) => acc + item.price * item.pivot.quantity,
-                0
-            );
+            console.log(this.$store.state.order);
 
-            return amount.toLocaleString("cs-CZ", {
-                style: "currency",
-                currency: "CZK",
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            });
+
+            // return amount.toLocaleString("cs-CZ", {
+            //     style: "currency",
+            //     currency: "CZK",
+            //     minimumFractionDigits: 0,
+            //     maximumFractionDigits: 0
+            // });
         }
     }
 };

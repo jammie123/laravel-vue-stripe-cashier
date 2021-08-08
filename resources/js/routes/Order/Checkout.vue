@@ -1,5 +1,5 @@
 x<template>
-    <div class="w-full px-4" v-if="this.$store.state.cart != ''">
+    <div class="container mx-auto px-4">
         <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto">
             <table class="table-auto w-full text-left whitespace-no-wrap">
                 <thead>
@@ -41,7 +41,7 @@ x<template>
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-4 font-bold">Total Amount</td>
+                        <td class="p-4 font-bold">Celkem</td>
                         <td class="p-4 font-bold" v-text="cartQuantity"></td>
                         <td class="p-4 font-bold" v-text="cartTotal"></td>
                         <td class="w-10 text-right"></td>
@@ -51,46 +51,30 @@ x<template>
         </div>
         <div class="lg:w-2/3  w-full mx-auto mt-8">
             <div class="lg:flex flex-wrap flex-col lg:flex-row w-full mt-8">
-                <div class="lg:w-1/3 w-full lg:p-4 p-0">
+                <div class="w-full py-4">
                     <div class="relative">
                         <label
-                            for="first_name"
+                            for="name"
                             class="leading-7 text-sm text-gray-600"
-                            >First Name</label
+                            >Jméno a Příjmení</label
                         >
                         <input
                             type="text"
-                            id="first_name"
-                            name="first_name"
+                            id="name"
+                            name="name"
                             class="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                            v-model="customer.first_name"
+                            v-model="customer.name"
                             :disabled="paymentProcessing"
                         />
                     </div>
                 </div>
-                <div class="lg:w-1/3 w-full lg:p-4 p-0">
-                    <div class="relative">
-                        <label
-                            for="last_name"
-                            class="leading-7 text-sm text-gray-600"
-                            >Last Name</label
-                        >
-                        <input
-                            type="text"
-                            id="last_name"
-                            name="last_name"
-                            class="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                            v-model="customer.last_name"
-                            :disabled="paymentProcessing"
-                        />
-                    </div>
-                </div>
-                <div class="lg:w-1/3 w-full lg:p-4 p-0">
+
+                <div class="w-full py-4">
                     <div class="relative">
                         <label
                             for="email"
                             class="leading-7 text-sm text-gray-600"
-                            >Email Address</label
+                            >Email</label
                         >
                         <input
                             type="email"
@@ -114,24 +98,7 @@ x<template>
             </div>
         </div>
     </div>
-    <div v-else>
-        <div class="p-8 lg:w-1/3 mx-auto">
-            <h1 class="text-4xl leading-tight font-serif">
-                Upps!!! Váš košík je zatím prázdný
-            </h1>
-            <p class="text-xl pt-4 text-gray-700">
-                Hoďte si něco dobrého do košíku než to bude všechno pryč'...
-            </p>
 
-            <button
-                class="flex mt-12 text-center text-black bg-yellow-300 border-0 text-2xl py-4 px-6 focus:outline-none hover:bg-yellow-400 rounded-1xl w-full"
-            >
-                <router-link :to="{ name: 'home.index' }" class="text-center w-full">
-                    Hurá do nakupování
-                </router-link>
-            </button>
-        </div>
-    </div>
 </template>
 <script>
 export default {
@@ -139,13 +106,8 @@ export default {
         return {
             cardElement: {},
             customer: {
-                first_name: "",
-                last_name: "",
+                name: "",
                 email: "",
-                address: "",
-                city: "",
-                state: "",
-                zip_code: ""
             },
             paymentProcessing: false
         };
@@ -181,11 +143,11 @@ export default {
                 .post("/api/orders", this.customer)
                 .then(response => {
                     console.log(response);
+                    this.$store.dispatch("clearCart");
 
-                    // this.$store.commit("updateOrder", response.data);
-                    // this.$store.dispatch("clearCart");
+                    this.$store.commit("updateOrder", response.data);
 
-                    // this.$router.push({ name: "order.summary" });
+                    this.$router.push({ name: "order.summary" });
                 })
                 .catch(error => {
                     console.error(error);

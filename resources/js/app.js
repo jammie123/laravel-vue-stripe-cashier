@@ -6,24 +6,28 @@ import App from "./components/App.vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
 
+import createPersistedState from "vuex-persistedstate";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: "history",
     routes: require("./routes.js"),
-    scrollBehavior (to, from, savedPosition) {
-        return { x: 0, y: 0 }
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
     }
 });
 
 const store = new Vuex.Store({
+    plugins: [createPersistedState()],
     state: {
         products: [],
         cart: [],
         order: {},
-        total: 0
+        total: 0,
+        isloading: true
     },
+
     mutations: {
         updateProducts(state, products) {
             state.products = products;
@@ -34,24 +38,26 @@ const store = new Vuex.Store({
             );
             if (productInCartIndex !== -1) {
                 product.quantity++;
-                state.cart[productInCartIndex] = product 
+                state.cart[productInCartIndex] = product;
                 state.cart = [...state.cart];
-                state.total = state.cart.reduce((acc, item) => item.price * item.quantity, 0);    
+                state.total = state.cart.reduce(
+                    (acc, item) => item.price * item.quantity,
+                    0
+                );
 
                 return;
             }
 
-            product.quantity = 1;   
+            product.quantity = 1;
             state.cart = [...state.cart, product];
-            state.total = state.cart.reduce((acc, item) => item.price * item.quantity, 0);  
-
-     
-            
-            
+            state.total = state.cart.reduce(
+                (acc, item) => item.price * item.quantity,
+                0
+            );
         },
         removeFromCart(state, item) {
             state.cart.splice(item, 1);
-            state.total = state.total - (item.quantity * item.price);
+            state.total = state.total - item.quantity * item.price;
             console.log(state);
         },
         updateOrder(state, order) {
@@ -63,28 +69,23 @@ const store = new Vuex.Store({
 
         getTotal(state) {
             return state.cart.reduce(
-                (acc, item) => 
-
-
-                    state.total = item.price * item.quantity,
-                    0
-                
+                (acc, item) => (state.total = item.price * item.quantity),
+                0
             );
         }
     },
     getters: {
         getTotal: state => {
             return state.total;
-          
         },
-
 
         getCartItems: (state, product) => {
             // console.log(state.cart);
-           
-                // console.log(state.cart.reduce((a, b) => console.log(a), 0));
-                return state.cart.reduce((a, b) => {return a + b.quantity}, 0);
-        
+
+            // console.log(state.cart.reduce((a, b) => console.log(a), 0));
+            return state.cart.reduce((a, b) => {
+                return a + b.quantity;
+            }, 0);
         }
     },
     actions: {
@@ -94,13 +95,13 @@ const store = new Vuex.Store({
                 .get("/api/products")
                 .then(response => {
                     commit("updateProducts", response.data);
+                    this.state.isloading = false;
                 })
                 .catch(error => console.error(error));
         },
         clearCart({ commit }) {
             commit("updateCart", []);
-        },
-
+        }
     }
 });
 

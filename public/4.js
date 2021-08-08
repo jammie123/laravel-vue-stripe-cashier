@@ -45,6 +45,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
@@ -118,7 +120,7 @@ var render = function() {
                 "ul",
                 {
                   staticClass:
-                    "grid gap-2 grid-flow-col auto-cols-max overflow-auto mx-auto w-full"
+                    "grid gap-2 grid-flow-col auto-cols-max lg:grid-cols-3 overflow-auto mx-auto w-full"
                 },
                 _vm._l(_vm.images, function(item) {
                   return _c("div", { key: item }, [
