@@ -1,6 +1,20 @@
-x<template>
-    <div class="container mx-auto px-4">
-        <div class="lg:w-2/3 w-full mx-auto mt-8 overflow-auto">
+<template>
+    <div
+        v-if="cartQuantity == 0"
+        class="container mx-auto flex flex-col justify-center items-center h-screen"
+    >
+        <h1 class="lg:text-3xl text-center  leading-loose px-4 lg:px-0 ">
+            V košíku nemáš žádné zboží, upaluj si tam něco přidat jinak na tebe
+            nezbyde
+        </h1>
+        <router-link
+            :to="{ name: 'products.index' }"
+            class="flex mt-12 text-center justify-center text-black bg-yellow-300 border-0 text-2xl py-4 px-6 focus:outline-none hover:bg-yellow-400 rounded-1xl"
+           
+        >Přejít na produkty</router-link>
+    </div>
+    <div v-else class="container mx-auto px-4">
+        <div class="w-full mx-auto mt-8 overflow-auto">
             <table class="table-auto w-full text-left whitespace-no-wrap">
                 <thead>
                     <tr>
@@ -36,7 +50,7 @@ x<template>
                                 class="flex ml-auto text-sm text-black bg-yellow-400 border-0 py-2 px-2 focus:outline-none hover:bg-yellow-500 rounded"
                                 @click="$store.commit('removeFromCart', item)"
                             >
-                                Remove
+                                Odstranit
                             </button>
                         </td>
                     </tr>
@@ -49,7 +63,7 @@ x<template>
                 </tbody>
             </table>
         </div>
-        <div class="lg:w-2/3  w-full mx-auto mt-8">
+        <div class="w-full mx-auto mt-8">
             <div class="lg:flex flex-wrap flex-col lg:flex-row w-full mt-8">
                 <div class="w-full py-4">
                     <div class="relative">
@@ -98,7 +112,6 @@ x<template>
             </div>
         </div>
     </div>
-
 </template>
 <script>
 export default {
@@ -107,7 +120,7 @@ export default {
             cardElement: {},
             customer: {
                 name: "",
-                email: "",
+                email: ""
             },
             paymentProcessing: false
         };

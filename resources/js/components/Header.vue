@@ -51,9 +51,9 @@
             </svg>
 
             <span
-                v-if="items != 0"
+                v-if="itemsInCart > 0"
                 class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center"
-                v-text="`${items == 0 ? '' : items} `"
+                v-text="itemsInCart"
             >
             </span>
         </router-link>
@@ -78,11 +78,13 @@ export default {
     data() {
         return {};
     },
+
     computed: {
-        ...mapGetters({
-            total: "getTotal",
-            items: "getCartItems"
-        })
+        itemsInCart() {
+            let cart = this.$store.getters.cartProducts;
+            console.log(cart);
+            return cart.reduce((accum, item) => accum + item.quantity, 0);
+        }
     }
 };
 </script>
