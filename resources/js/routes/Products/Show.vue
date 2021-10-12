@@ -1,21 +1,10 @@
 <template>
     <section class="text-gray-700 body-font overflow-hidden" v-if="product">
-        <div class="container mx-auto px-2">
+        <div class="container mx-auto px-2 lg:px-0">
             <div class="lg:w-5/5 mx-auto flex flex-wrap">
-                <ul
-                    class="grid gap-2 grid-flow-col auto-cols-max lg:grid-cols-3 overflow-auto mx-auto w-full"
-                >
-                    <div v-for="item in images" :key="item" class="">
-                        <img
-                            alt="ecommerce"
-                            class="w-full h-80 object-cover"
-                            :src="item"
-                        />
-                    </div>
-                </ul>
-
+                <Gallery :images="images" />
                 <div
-                    class="lg:w-1/2 ml-auto mr-auto w-full lg:pl-10 lg:py-6 mt-6 lg:mt-8"
+                    class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-8"
                 >
                     <h1
                         class="text-gray-900 text-4xl title-font font-medium mb-2"
@@ -27,12 +16,11 @@
                     ></p>
                     <div class="flex flex-col">
                         <span
-                            class="title-font font-medium text-3xl text-gray-900 py-8"
+                            class="title-font font-medium text-3xl text-gray-900 py-8 text-center lg:text-left"
                             v-text="formatCurrency(product.price)"
                         ></span>
 
-                        <AddToCart :product="product" :cart="cart"/>
-                        
+                        <AddToCart :product="product" :cart="cart" />
                     </div>
                 </div>
             </div>
@@ -42,9 +30,10 @@
 <script>
 import Button from "../../../../vendor/laravel/breeze/stubs/inertia/resources/js/Components/Button.vue";
 import AddToCart from "../../components/addToCart.vue";
+import Gallery from "../../components/gallery.vue";
 
 export default {
-    components: { Button, AddToCart },
+    components: { Button, AddToCart, Gallery },
 
     methods: {
         formatCurrency(amount) {
@@ -55,11 +44,10 @@ export default {
                 maximumFractionDigits: 0
             });
         }
-
     },
 
     computed: {
-        cart(){
+        cart() {
             return this.$store.state.cart;
         },
         products() {

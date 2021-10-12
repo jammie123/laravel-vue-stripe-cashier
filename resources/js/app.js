@@ -33,7 +33,7 @@ const store = new Vuex.Store({
             state.products = products;
         },
 
-        addToCart(state, {name, price, id}) {
+        addToCart(state, { name, price, id }) {
             // console.log(product);
             const record = state.cart.find(p => p.id === id);
             if (!record) {
@@ -61,10 +61,29 @@ const store = new Vuex.Store({
             state.total = state.total - item.quantity * item.price;
         },
         updateOrder(state, order) {
-            state.order = order;
+            let cart = JSON.parse(order.cart);
+            const { name, amount, email } = order;
+            state.order = { cart, name, amount, email };
+            console.log(cart);
         },
         updateCart(state, cart) {
             state.cart = cart;
+        },
+        postOrder(state, customer) {
+            let cart = state.cart;
+            let cartEncoded = JSON.stringify(state.cart);
+            let orderEncoded = { ...customer, cartEncoded };
+            state.order = { ...customer, cart };
+            axios
+                .post("/api/orders", orderEncoded)
+                .then(response => {
+                    console.log(response);
+                    store.dispatch("clearCart");
+                    router.push({ name: "order.summary" });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         },
 
         getTotal(state) {
@@ -121,6 +140,9 @@ const store = new Vuex.Store({
         },
         clearCart({ commit }) {
             commit("updateCart", []);
+        },
+        postOrder({ commit }, customer) {
+            commit("postOrder", customer);
         }
     }
 });

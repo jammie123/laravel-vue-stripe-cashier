@@ -3,17 +3,17 @@
         v-if="cartQuantity == 0"
         class="container mx-auto flex flex-col justify-center items-center h-screen"
     >
-        <h1 class="lg:text-3xl text-center  leading-loose px-4 lg:px-0 ">
+        <h1 class="lg:text-3xl text-centerleading-loose px-4 lg:px-0 ">
             V košíku nemáš žádné zboží, upaluj si tam něco přidat jinak na tebe
             nezbyde
         </h1>
         <router-link
             :to="{ name: 'products.index' }"
             class="flex mt-12 text-center justify-center text-black bg-yellow-300 border-0 text-2xl py-4 px-6 focus:outline-none hover:bg-yellow-400 rounded-1xl"
-           
-        >Přejít na produkty</router-link>
+            >Přejít na produkty</router-link
+        >
     </div>
-    <div v-else class="container mx-auto px-4">
+    <div v-else class="container mx-auto px-2 lg:px-0">
         <div class="w-full mx-auto mt-8 overflow-auto">
             <table class="table-auto w-full text-left whitespace-no-wrap">
                 <thead>
@@ -105,7 +105,7 @@
             <div class="w-full mt-8">
                 <button
                     class="flex mx-auto text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg w-full text-center"
-                    @click="postOrder"
+                    @click="postOrder(customer)"
                     :disabled="paymentProcessing"
                     v-text="paymentProcessing ? 'Processing' : 'Objednat'"
                 ></button>
@@ -114,6 +114,7 @@
     </div>
 </template>
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
     data() {
         return {
@@ -138,34 +139,37 @@ export default {
                 maximumFractionDigits: 0
             });
         },
-        async postOrder() {
-            this.customer.amount = this.$store.state.cart.reduce(
-                (acc, item) => acc + item.price * item.quantity,
-                0
-            );
-            console.log(this.customer.amount);
 
-            // this.customer.cart = JSON.stringify(this.$store.state.cart);
-            // let productIds = this.$store.state.cart.map(item=>item.id);
-            // let quantity = this.$store.state.cart.map(item=>item.quantity);
+        ...mapActions(["postOrder"]),
 
-            this.customer.cart = JSON.stringify(this.$store.state.cart);
-            console.log(this.customer.cart);
+        // async postOrder(customer) {
+        //     this.customer.amount = this.$store.state.cart.reduce(
+        //         (acc, item) => acc + item.price * item.quantity,
+        //         0
+        //     );
+        //     console.log(this.customer.amount);
 
-            axios
-                .post("/api/orders", this.customer)
-                .then(response => {
-                    console.log(response);
-                    this.$store.dispatch("clearCart");
+        //     // this.customer.cart = JSON.stringify(this.$store.state.cart);
+        //     // let productIds = this.$store.state.cart.map(item=>item.id);
+        //     // let quantity = this.$store.state.cart.map(item=>item.quantity);
 
-                    this.$store.commit("updateOrder", response.data);
+        //     this.customer.cart = JSON.stringify(this.$store.state.cart);
+        //     console.log(this.customer.cart);
 
-                    this.$router.push({ name: "order.summary" });
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
+        //     axios
+        //         .post("/api/orders", this.customer)
+        //         .then(response => {
+        //             console.log(response);
+
+        //             this.$store.commit("updateOrder", this.customer);
+        //             this.$store.dispatch("clearCart");
+
+        //             this.$router.push({ name: "order.summary" });
+        //         })
+        //         .catch(error => {
+        //             console.error(error);
+        //         });
+        // }
     },
     computed: {
         cart() {

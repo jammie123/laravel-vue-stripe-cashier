@@ -55,6 +55,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     cartLineTotal: function cartLineTotal(item) {
@@ -69,19 +72,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     order: function order() {
-      console.log(this.$store.state.order);
+      // console.log(this.$store.state.order);
       return this.$store.state.order;
     },
     orderQuantity: function orderQuantity() {
-      console.log(this.$store.state.order);
+      // console.log(this.$store.state.order);
+      var order = this.$store.state.order;
+      return order.cart.reduce(function (accum, item) {
+        return accum + item.quantity;
+      }, 0);
     },
     orderTotal: function orderTotal() {
-      console.log(this.$store.state.order); // return amount.toLocaleString("cs-CZ", {
-      //     style: "currency",
-      //     currency: "CZK",
-      //     minimumFractionDigits: 0,
-      //     maximumFractionDigits: 0
-      // });
+      var order = this.$store.state.order;
+      return order.cart.reduce(function (accum, item) {
+        return accum + item.price;
+      }, 0);
     }
   }
 });
@@ -103,70 +108,80 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full" }, [
-    _c("div", { staticClass: "lg:w-2/3 w-full mx-auto mt-8 overflow-auto" }, [
-      _c("h2", {
-        staticClass: "text-sm title-font text-gray-500 tracking-widest",
-        domProps: {
-          textContent: _vm._s("Transaction ID: " + _vm.order.transaction_id)
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "h1",
-        { staticClass: "text-gray-900 text-3xl title-font font-medium mb-4" },
-        [_vm._v("\n            Thank you for your purchase\n        ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "table",
-        { staticClass: "table-auto w-full text-left whitespace-no-wrap" },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            [
-              _vm._l(_vm.order.products, function(item) {
-                return _c("tr", { key: item.id }, [
-                  _c("td", {
-                    staticClass: "p-4",
-                    domProps: { textContent: _vm._s(item.name) }
-                  }),
-                  _vm._v(" "),
-                  _c("td", {
-                    staticClass: "p-4",
-                    domProps: { textContent: _vm._s(item.pivot.quantity) }
-                  }),
-                  _vm._v(" "),
-                  _c("td", {
-                    staticClass: "p-4",
-                    domProps: { textContent: _vm._s(_vm.cartLineTotal(item)) }
-                  })
-                ])
-              }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", { staticClass: "p-4 font-bold" }, [
-                  _vm._v("Total Amount")
-                ]),
-                _vm._v(" "),
-                _c("td", {
-                  staticClass: "p-4 font-bold",
-                  domProps: { textContent: _vm._s(_vm.orderQuantity) }
+  return _c("div", { staticClass: "container mx-auto" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "w-full mx-auto mt-8 overflow-auto items-center flex flex-col align-middle justify-center h-half"
+      },
+      [
+        _c(
+          "h1",
+          { staticClass: "text-gray-900 text-3xl title-font font-medium mb-4" },
+          [_vm._v("\n            Děkujeme za Vaši objednávku\n        ")]
+        ),
+        _vm._v(" "),
+        _c("h2", {
+          staticClass: "text-2xl mb-8 title-font text-gray-500",
+          domProps: {
+            textContent: _vm._s(
+              "Detaily budou zaslané na Váš email " + _vm.order.email
+            )
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "table",
+          { staticClass: "table-auto w-1/2 text-left whitespace-no-wrap" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              [
+                _vm._l(_vm.order.cart, function(item) {
+                  return _c("tr", { key: item.id }, [
+                    _c("td", {
+                      staticClass: "p-4",
+                      domProps: { textContent: _vm._s(item.name) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      staticClass: "p-4",
+                      domProps: { textContent: _vm._s(item.price) }
+                    })
+                  ])
                 }),
                 _vm._v(" "),
-                _c("td", {
-                  staticClass: "p-4 font-bold",
-                  domProps: { textContent: _vm._s(_vm.orderTotal) }
-                })
-              ])
-            ],
-            2
-          )
-        ]
-      )
-    ])
+                _c("tr", [
+                  _c("td", { staticClass: "p-4 font-bold" }, [
+                    _vm._v("Celkem")
+                  ]),
+                  _vm._v(" "),
+                  _c("td", {
+                    staticClass: "p-4 font-bold",
+                    domProps: { textContent: _vm._s(_vm.orderTotal) }
+                  })
+                ])
+              ],
+              2
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass:
+              "flex mx-auto text-black w-1/2 bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg text-center justify-center mt-12",
+            attrs: { to: { name: "home.index" } }
+          },
+          [_vm._v("Zpátky na hlavní stranu")]
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -182,25 +197,20 @@ var staticRenderFns = [
             staticClass:
               "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl"
           },
-          [_vm._v("\n                        Item\n                    ")]
+          [
+            _vm._v(
+              "\n                        Název zboží\n                    "
+            )
+          ]
         ),
         _vm._v(" "),
         _c(
           "th",
           {
             staticClass:
-              "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200"
+              "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"
           },
-          [_vm._v("\n                        Quantity\n                    ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200"
-          },
-          [_vm._v("\n                        Price\n                    ")]
+          [_vm._v("\n                        Cena\n                    ")]
         )
       ])
     ])

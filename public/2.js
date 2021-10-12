@@ -17,6 +17,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -143,7 +149,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       paymentProcessing: false
     };
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({
     cartLineTotal: function cartLineTotal(item) {
       var amount = item.price * item.quantity;
       amount = amount;
@@ -153,8 +159,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
       });
-    },
-    postOrder: function postOrder() {
+    }
+  }, mapActions(["postOrder"])), {}, {
+    postOrder: function postOrder(customer) {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -174,9 +181,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 axios.post("/api/orders", _this.customer).then(function (response) {
                   console.log(response);
 
-                  _this.$store.dispatch("clearCart");
+                  _this.$store.commit("updateOrder", _this.customer);
 
-                  _this.$store.commit("updateOrder", response.data);
+                  _this.$store.dispatch("clearCart");
 
                   _this.$router.push({
                     name: "order.summary"
@@ -193,7 +200,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     }
-  },
+  }),
   computed: {
     cart: function cart() {
       return this.$store.state.cart;
@@ -444,7 +451,11 @@ var render = function() {
                   _vm.paymentProcessing ? "Processing" : "Objednat"
                 )
               },
-              on: { click: _vm.postOrder }
+              on: {
+                click: function($event) {
+                  return _vm.postOrder(this.customer)
+                }
+              }
             })
           ])
         ])

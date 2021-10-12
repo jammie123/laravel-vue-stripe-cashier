@@ -54631,6 +54631,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -54700,10 +54706,41 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       state.total = state.total - item.quantity * item.price;
     },
     updateOrder: function updateOrder(state, order) {
-      state.order = order;
+      var cart = JSON.parse(order.cart);
+      var name = order.name,
+          amount = order.amount,
+          email = order.email;
+      state.order = {
+        cart: cart,
+        name: name,
+        amount: amount,
+        email: email
+      };
+      console.log(cart);
     },
     updateCart: function updateCart(state, cart) {
       state.cart = cart;
+    },
+    postOrder: function postOrder(state, customer) {
+      var cart = state.cart;
+      var cartEncoded = JSON.stringify(state.cart);
+
+      var orderEncoded = _objectSpread(_objectSpread({}, customer), {}, {
+        cartEncoded: cartEncoded
+      });
+
+      state.order = _objectSpread(_objectSpread({}, customer), {}, {
+        cart: cart
+      });
+      axios.post("/api/orders", orderEncoded).then(function (response) {
+        console.log(response);
+        store.dispatch("clearCart");
+        router.push({
+          name: "order.summary"
+        });
+      })["catch"](function (error) {
+        console.error(error);
+      });
     },
     getTotal: function getTotal(state) {
       return state.cart.reduce(function (acc, item) {
@@ -54771,6 +54808,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     clearCart: function clearCart(_ref7) {
       var commit = _ref7.commit;
       commit("updateCart", []);
+    },
+    postOrder: function postOrder(_ref8, customer) {
+      var commit = _ref8.commit;
+      commit("postOrder", customer);
     }
   }
 });
@@ -55003,7 +55044,7 @@ module.exports = [{
   path: '/checkout',
   name: 'order.checkout',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./routes/Order/Checkout.vue */ "./resources/js/routes/Order/Checkout.vue"));
+    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./routes/Order/Checkout.vue */ "./resources/js/routes/Order/Checkout.vue"));
   }
 }, {
   path: '/summary',
