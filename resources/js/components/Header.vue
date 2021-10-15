@@ -1,6 +1,7 @@
 <template>
     <header class="relative container mx-auto text-gray-800 body-font ">
         <div
+            v-if="!this.type"
             class="relative mx-auto flex flex-col flex-wrap lg:mt-4 lg:mb-12 lg:p-0 p-5 md:flex-row items-start"
         >
             <a class="flex title-font font-medium items-center md:mb-0">
@@ -33,6 +34,32 @@
                 </router-link>
             </nav>
         </div>
+
+        <div
+            v-else
+            class="back-to relative mx-auto flex flex-row flex-wrap lg:mt-4 lg:mb-12 lg:p-0 p-5 md:flex-row items-start"
+        >
+            <a class="flex flex-row title-font font-medium items-center md:mb-0">
+                <span class="text-xl flex flex-row">
+                    <router-link :to="{ name: 'home.index' }" class="flex justify-center items-center">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-8 w-8 mr-4"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                                clip-rule="evenodd"
+                            />
+                        </svg> Zpátky na produkty
+                    </router-link>
+                </span>
+            </a>
+
+        </div>
+
         <router-link
             :to="{ name: 'order.checkout' }"
             class="absolute right-4 top-4"
@@ -64,7 +91,7 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
     name: "Header",
-    props: ["fixed"],
+    props: ["type"],
     methods: {
         getCurrency: total => {
             return total.toLocaleString("cs-CZ", {

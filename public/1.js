@@ -171,6 +171,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "gallery",
@@ -201,7 +207,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     subImages: function subImages() {
       console.log(this.images.slice(1));
-      return this.images.slice(1);
+      return this.images.slice(1, 3);
     }
   }
 });
@@ -460,7 +466,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "w-full lg:w-1/2 flex gap-2 flex-col",
+      staticClass: "w-full lg:w-1/2 flex gap-2 flex-col ",
       on: {
         click: function($event) {
           return _vm.toggleModal()
@@ -468,18 +474,28 @@ var render = function() {
       }
     },
     [
-      _c("img", {
-        staticClass: "w-full h-auto object-cover rounded-xl",
-        attrs: { alt: "ecommerce", src: _vm.mainImage }
-      }),
+      _c("div", { staticClass: "relative" }, [
+        _c("img", {
+          staticClass: "w-full h-auto object-cover rounded-xl",
+          attrs: { alt: "ecommerce", src: _vm.mainImage }
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "bg-gray-800 absolute bottom-4 right-4 text-white p-4 rounded-xl text-xl flex justify-center items-center ",
+          domProps: {
+            textContent: _vm._s("+ další " + _vm.getImages.length + " fotky")
+          }
+        })
+      ]),
       _vm._v(" "),
       _c(
         "ul",
-        { staticClass: "w-full gap-2 flex flex-row flex-shrink" },
+        { staticClass: "w-full gap-2 lg:flex flex-row flex-shrink hidden" },
         _vm._l(_vm.subImages, function(item) {
           return _c("img", {
             key: item,
-            staticClass: "w-1/2 h-40 object-cover rounded-xl",
+            staticClass: "w-full h-40 object-cover rounded-xl",
             attrs: { alt: "ecommerce", src: item }
           })
         }),
@@ -497,7 +513,12 @@ var render = function() {
               _c("transition", { attrs: { name: "fade", appear: "" } }, [
                 _c("div", {
                   staticClass:
-                    "modal-overlay absolute w-full h-full bg-white opacity-95"
+                    "modal-overlay absolute w-full h-full bg-white opacity-95",
+                  on: {
+                    click: function($event) {
+                      return _vm.toggleModal()
+                    }
+                  }
                 })
               ]),
               _vm._v(" "),
@@ -505,12 +526,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "modal-container fixed w-full h-full z-50 overflow-y-auto ",
-                  on: {
-                    click: function($event) {
-                      return _vm.toggleModal()
-                    }
-                  }
+                    "modal-container fixed w-full h-full z-50 overflow-y-auto "
                 },
                 [
                   _c(
@@ -553,7 +569,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "modal-content container mx-auto h-auto text-left pt-20"
+                        "modal-content container mx-auto h-auto text-left py-20"
                     },
                     [
                       _c(
@@ -615,7 +631,7 @@ var render = function() {
         "section",
         { staticClass: "text-gray-700 body-font overflow-hidden" },
         [
-          _c("div", { staticClass: "container mx-auto px-2 lg:px-0" }, [
+          _c("div", { staticClass: "container mx-auto px-4 lg:px-0" }, [
             _c(
               "div",
               { staticClass: "lg:w-5/5 mx-auto flex flex-wrap" },

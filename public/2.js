@@ -9,14 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -138,6 +131,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -149,7 +143,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       paymentProcessing: false
     };
   },
-  methods: _objectSpread(_objectSpread({
+  methods: _objectSpread({
     cartLineTotal: function cartLineTotal(item) {
       var amount = item.price * item.quantity;
       amount = amount;
@@ -160,47 +154,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         maximumFractionDigits: 0
       });
     }
-  }, mapActions(["postOrder"])), {}, {
-    postOrder: function postOrder(customer) {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this.customer.amount = _this.$store.state.cart.reduce(function (acc, item) {
-                  return acc + item.price * item.quantity;
-                }, 0);
-                console.log(_this.customer.amount); // this.customer.cart = JSON.stringify(this.$store.state.cart);
-                // let productIds = this.$store.state.cart.map(item=>item.id);
-                // let quantity = this.$store.state.cart.map(item=>item.quantity);
-
-                _this.customer.cart = JSON.stringify(_this.$store.state.cart);
-                console.log(_this.customer.cart);
-                axios.post("/api/orders", _this.customer).then(function (response) {
-                  console.log(response);
-
-                  _this.$store.commit("updateOrder", _this.customer);
-
-                  _this.$store.dispatch("clearCart");
-
-                  _this.$router.push({
-                    name: "order.summary"
-                  });
-                })["catch"](function (error) {
-                  console.error(error);
-                });
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    }
-  }),
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["postOrder"])),
   computed: {
     cart: function cart() {
       return this.$store.state.cart;
@@ -252,8 +206,7 @@ var render = function() {
           _c(
             "h1",
             {
-              staticClass:
-                "lg:text-3xl text-center  leading-loose px-4 lg:px-0 "
+              staticClass: "lg:text-3xl text-centerleading-loose px-4 lg:px-0 "
             },
             [
               _vm._v(
@@ -274,7 +227,7 @@ var render = function() {
         ],
         1
       )
-    : _c("div", { staticClass: "container mx-auto px-4" }, [
+    : _c("div", { staticClass: "container mx-auto px-2 lg:px-0" }, [
         _c("div", { staticClass: "w-full mx-auto mt-8 overflow-auto" }, [
           _c(
             "table",
@@ -453,7 +406,7 @@ var render = function() {
               },
               on: {
                 click: function($event) {
-                  return _vm.postOrder(this.customer)
+                  return _vm.postOrder(_vm.customer)
                 }
               }
             })

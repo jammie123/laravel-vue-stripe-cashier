@@ -1,16 +1,22 @@
 <template>
-    <div class="w-full lg:w-1/2 flex gap-2 flex-col" @click="toggleModal()">
-        <img
-            alt="ecommerce"
-            class="w-full h-auto object-cover rounded-xl"
-            :src="mainImage"
-        />
-        <ul class="w-full gap-2 flex flex-row flex-shrink">
+    <div class="w-full lg:w-1/2 flex gap-2 flex-col " @click="toggleModal()">
+        <div class="relative">
+            <img
+                alt="ecommerce"
+                class="w-full h-auto object-cover rounded-xl"
+                :src="mainImage"
+            />
+            <div
+                class="bg-gray-800 absolute bottom-4 right-4 text-white p-4 rounded-xl text-xl flex justify-center items-center "
+                v-text="`+ další ${getImages.length} fotky`"
+            ></div>
+        </div>
+        <ul class="w-full gap-2 lg:flex flex-row flex-shrink hidden">
             <img
                 v-for="item in subImages"
                 :key="item"
                 alt="ecommerce"
-                class="w-1/2 h-40 object-cover rounded-xl"
+                class="w-full h-40 object-cover rounded-xl"
                 :src="item"
             />
         </ul>
@@ -23,11 +29,11 @@
         >
             <transition name="fade" appear>
                 <div
+                    @click="toggleModal()"
                     class="modal-overlay absolute w-full h-full bg-white opacity-95"
                 ></div>
             </transition>
             <div
-                @click="toggleModal()"
                 class="modal-container fixed w-full h-full z-50 overflow-y-auto "
             >
                 <div
@@ -50,7 +56,7 @@
 
                 <!-- Add margin if you want to see grey behind the modal-->
                 <div
-                    class="modal-content container mx-auto h-auto text-left pt-20"
+                    class="modal-content container mx-auto h-auto text-left py-20"
                 >
                     <!--Title-->
 
@@ -106,7 +112,7 @@ export default {
         },
         subImages() {
             console.log(this.images.slice(1));
-            return this.images.slice(1);
+            return this.images.slice(1, 3);
         }
     }
 };

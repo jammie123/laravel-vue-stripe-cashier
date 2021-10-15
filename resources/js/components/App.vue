@@ -1,19 +1,19 @@
 <template>
-
-        <div class="wrapper">      
-                <Header :class="$route.meta.headerClass" />  
-                <router-view></router-view>
-        </div>
-
+    <div class="wrapper">
+        <Header :type="$route.meta.type" />
+        <router-view></router-view>
+        <Footer />
+    </div>
 </template>
 
 <script>
 import Header from "./Header.vue";
+import Footer from "./Footer.vue";
 
 export default {
     name: "App",
     components: {
-        Header
+        Header,Footer
     }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
     <section class="text-gray-700 body-font overflow-hidden" v-if="product">
-        <div class="container mx-auto px-2 lg:px-0">
+        <div class="container mx-auto px-4 lg:px-0">
             <div class="lg:w-5/5 mx-auto flex flex-wrap">
                 <Gallery :images="images" />
                 <div
