@@ -445,14 +445,15 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "mt-4 absolute bottom-5 left-5" }, [
+      _c("div", { staticClass: "mt-4 absolute bottom-4 left-4" }, [
         _c("h2", {
-          staticClass: "text-white title-font text-4xl font-bold",
+          staticClass: "text-white title-font text-3xl lg:text-4xl font-bold",
           domProps: { textContent: _vm._s(_vm.product.name) }
         }),
         _vm._v(" "),
         _c("p", {
-          staticClass: "text-white title-font text-2xl font-regular mt-2",
+          staticClass:
+            "text-white title-font text-xl lg:text-2xl font-regular mt-2",
           domProps: {
             textContent: _vm._s(_vm.formatCurrency(_vm.product.price))
           }

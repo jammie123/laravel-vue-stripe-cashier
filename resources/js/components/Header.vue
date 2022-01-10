@@ -37,7 +37,7 @@
 
         <div
             v-else
-            class="back-to relative mx-auto flex flex-row flex-wrap lg:mt-4 lg:mb-12 lg:p-0 p-5 md:flex-row items-start"
+            class="back-to relative h-20 mx-auto flex flex-row flex-wrap lg:mt-4 lg:mb-12 lg:p-0 p-5 md:flex-row items-start"
         >
             <a class="flex flex-row title-font font-medium items-center md:mb-0">
                 <span class="text-xl flex flex-row">

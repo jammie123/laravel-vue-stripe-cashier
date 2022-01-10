@@ -12,14 +12,14 @@
             v-bind:lazy-srcset="getThumbnail(product)"
         />
 
-        <div class="mt-4 absolute bottom-5 left-5">
+        <div class="mt-4 absolute bottom-4 left-4">
             <h2
-                class="text-white title-font text-4xl font-bold"
+                class="text-white title-font text-3xl lg:text-4xl font-bold"
                 v-text="product.name"
             ></h2>
             <p
                 v-text="formatCurrency(product.price)"
-                class="text-white title-font text-2xl font-regular mt-2"
+                class="text-white title-font text-xl lg:text-2xl font-regular mt-2"
             ></p>
         </div>
     </router-link>

@@ -200,7 +200,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "container mx-auto flex flex-col justify-center items-center h-screen"
+            "container mx-auto flex flex-col justify-center items-center h-screen bg-gray-100"
         },
         [
           _c(
@@ -397,7 +397,7 @@ var render = function() {
           _c("div", { staticClass: "w-full mt-8" }, [
             _c("button", {
               staticClass:
-                "flex mx-auto text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg w-full text-center",
+                "flex mx-auto text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg w-full text-center justify-center",
               attrs: { disabled: _vm.paymentProcessing },
               domProps: {
                 textContent: _vm._s(

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel Vue Stripe Shopping Cart</title>
+    <title>Farma Častrov </title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
     </style>

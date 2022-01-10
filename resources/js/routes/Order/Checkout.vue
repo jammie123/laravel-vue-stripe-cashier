@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="cartQuantity == 0"
-        class="container mx-auto flex flex-col justify-center items-center h-screen"
+        class="container mx-auto flex flex-col justify-center items-center h-screen bg-gray-100"
     >
         <h1 class="lg:text-3xl text-centerleading-loose px-4 lg:px-0 ">
             V košíku nemáš žádné zboží, upaluj si tam něco přidat jinak na tebe
@@ -104,7 +104,7 @@
 
             <div class="w-full mt-8">
                 <button
-                    class="flex mx-auto text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg w-full text-center"
+                    class="flex mx-auto text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg w-full text-center justify-center"
                     @click="postOrder(customer)"
                     :disabled="paymentProcessing"
                     v-text="paymentProcessing ? 'Processing' : 'Objednat'"

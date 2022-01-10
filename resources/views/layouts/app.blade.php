@@ -23,7 +23,7 @@
             <!-- Page Heading -->
             <header class="bg-white shadow ">
                 <div class="mx-auto py-6 ">
-                    {{ $header }}
+                  
                 </div>
             </header>
 

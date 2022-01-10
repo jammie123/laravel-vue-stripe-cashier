@@ -27,6 +27,9 @@ Route::get('/pokus', [ProductController::class, 'pokus']);
 Route::get('/sayhello', function() {
     return phpinfo();
 });
+
+Route::get('/email', [OrderController::class, 'sendEmail']);
+
 Route::post('/upload', [FileUploadController::class, 'storeUploads']);
 
 Route::any('/{any}', function() {

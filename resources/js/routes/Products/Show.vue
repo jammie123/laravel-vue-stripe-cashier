@@ -15,11 +15,7 @@
                         v-html="product.description"
                     ></p>
                     <div class="flex flex-col">
-                        <span
-                            class="title-font font-medium text-3xl text-gray-900 py-8 text-center lg:text-left"
-                            v-text="formatCurrency(product.price)"
-                        ></span>
-
+                        
                         <AddToCart :product="product" :cart="cart" />
                     </div>
                 </div>
@@ -36,14 +32,7 @@ export default {
     components: { Button, AddToCart, Gallery },
 
     methods: {
-        formatCurrency(amount) {
-            return amount.toLocaleString("cs-CZ", {
-                style: "currency",
-                currency: "CZK",
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            });
-        }
+
     },
 
     computed: {

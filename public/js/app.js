@@ -38000,7 +38000,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "back-to relative mx-auto flex flex-row flex-wrap lg:mt-4 lg:mb-12 lg:p-0 p-5 md:flex-row items-start"
+                "back-to relative h-20 mx-auto flex flex-row flex-wrap lg:mt-4 lg:mb-12 lg:p-0 p-5 md:flex-row items-start"
             },
             [
               _c(

@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -47,17 +49,27 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        $request->validate([
-
-        ]);
+        $request->validate([]);
         $order->update($request->all());
 
         return redirect()->route('orders.index')
             ->with('success', 'Project updated successfully');
-
     }
     /* Save the specified resource in storage.
      */
+
+    public function sendEmail()
+    {
+        $order = [
+            "name" => "Hovězí svíčková",
+            "quantity" => "2",
+            "prize" => "1200 Kč"
+
+        ];
+        Mail::to("jan.fuxa137@gmail.com")->send(new OrderMail($order));
+        return "email success sended";
+    }
+
     public function store(Request $request)
     {
 
@@ -100,14 +112,13 @@ class OrderController extends Controller
     {
 
         $order = Order::findOrFail($order_id);
-        
 
-        if($order->products()->count()==1){
+
+        if ($order->products()->count() == 1) {
             $order->delete();
             return redirect()->route('orders.index')
-            ->with('success', 'Project updated successfully');
-        }
-        else{
+                ->with('success', 'Project updated successfully');
+        } else {
             $product = Product::findOrFail($product_id);
             $order->total = $order->total - $product->price;
             $order->products()->detach($product_id);
@@ -117,5 +128,4 @@ class OrderController extends Controller
         return redirect()->back()
             ->with('success', 'Project updated successfully');
     }
-
 }

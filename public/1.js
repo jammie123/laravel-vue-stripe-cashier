@@ -59,6 +59,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddToCart",
@@ -68,13 +81,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   props: ["product", "cart"],
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
+  methods: _objectSpread({
+    formatCurrency: function formatCurrency(amount) {
+      return amount.toLocaleString("cs-CZ", {
+        style: "currency",
+        currency: "CZK",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
     addtoCart: "addToCart",
     removeItem: "removeItem"
   })),
   computed: _objectSpread({
     getQuantity: function getQuantity() {
       return this.quantityData(this.product.id);
+    },
+    getPrizeCurrentItem: function getPrizeCurrentItem() {
+      return this.formatCurrency(this.quantityData(this.product.id) * this.product.price);
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     products: "allProducts",
@@ -251,10 +276,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -264,16 +285,7 @@ __webpack_require__.r(__webpack_exports__);
     AddToCart: _components_addToCart_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Gallery: _components_gallery_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  methods: {
-    formatCurrency: function formatCurrency(amount) {
-      return amount.toLocaleString("cs-CZ", {
-        style: "currency",
-        currency: "CZK",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-      });
-    }
-  },
+  methods: {},
   computed: {
     cart: function cart() {
       return this.$store.state.cart;
@@ -348,7 +360,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "bg-gray-100 px-4 lg:p-8" }, [
+    _c(
+      "p",
+      {
+        staticClass:
+          " text-black border-0 text-xs lg:text-sm align-middle my-auto lg:block"
+      },
+      [_vm._v("\n        Cena za balení\n    ")]
+    ),
+    _vm._v(" "),
+    _c("span", {
+      staticClass:
+        "title-font font-medium text-3xl text-gray-900 py-8 text-center lg:text-left",
+      domProps: {
+        textContent: _vm._s("" + _vm.formatCurrency(_vm.product.price))
+      }
+    }),
+    _vm._v(" "),
     _vm.getQuantity <= 0
       ? _c(
           "button",
@@ -369,34 +398,17 @@ var render = function() {
         )
       : _c(
           "div",
-          { staticClass: "align-middle flex mt-4 flex-col lg:flex-row" },
+          { staticClass: "flex mt-6 flex-col " },
           [
             _c(
-              "p",
-              {
-                staticClass:
-                  "text-center text-black border-0 text-xl align-middle my-auto  justify-center"
-              },
-              [_vm._v("\n            Počet balení v košíku\n        ")]
-            ),
-            _vm._v(" "),
-            _c("p", {
-              staticClass:
-                "text-center text-black border-0 text-sm align-middle my-auto pr-4"
-            }),
-            _vm._v(" "),
-            _c(
               "div",
-              {
-                staticClass:
-                  "flex flex-row justify-center align-middle mt-4 lg:mt-0"
-              },
+              { staticClass: "flex flex-row my-2 lg:mt-0 lg:justify-start" },
               [
                 _c(
                   "button",
                   {
                     staticClass:
-                      "flex text-center text-black bg-gray-200 border-0 text-2xl py-4 px-6 focus:outline-none hover:bg-gray-400 rounded-1xl ",
+                      "flex text-center text-black bg-gray-200 border-0 text-2xl py-2 px-4 focus:outline-none hover:bg-gray-400 rounded-1xl ",
                     on: {
                       click: function($event) {
                         return _vm.removeItem(_vm.product)
@@ -410,7 +422,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "h-auto mb-auto mt-auto px-8" }, [
+                _c("div", { staticClass: "h-auto mb-auto mt-auto px-6" }, [
                   _c("p", {
                     staticClass:
                       "text-center text-black border-0 text-2xl align-middle",
@@ -422,7 +434,7 @@ var render = function() {
                   "button",
                   {
                     staticClass:
-                      "flex text-center text-black bg-yellow-300 border-0 text-2xl py-4 px-6 focus:outline-none hover:bg-yellow-400 rounded-1xl ",
+                      "flex text-center text-black bg-yellow-300 border-0 text-2xl py-2 px-4 focus:outline-none hover:bg-yellow-400 rounded-1xl ",
                     on: {
                       click: function($event) {
                         return _vm.addtoCart(_vm.product)
@@ -436,8 +448,38 @@ var render = function() {
                   ]
                 )
               ]
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              {
+                staticClass:
+                  " text-black border-0 text-xs lg:text-sm align-middle my-auto mt-0 mb-6 mr-4 lg:block"
+              },
+              [
+                _vm._v(
+                  "\n            Počet balení v košíku v hodnotě " +
+                    _vm._s(_vm.getPrizeCurrentItem) +
+                    "\n        "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  " flex items-center text-black bg-yellow-300 border-0 justify-center text-2xl py-4 px-4 focus:outline-none hover:bg-yellow-400 rounded-1xl ",
+                attrs: {
+                  to: {
+                    name: "order.checkout"
+                  }
+                }
+              },
+              [_vm._v("Pokračovat do košíku\n        ")]
             )
-          ]
+          ],
+          1
         )
   ])
 }
@@ -659,16 +701,6 @@ var render = function() {
                       "div",
                       { staticClass: "flex flex-col" },
                       [
-                        _c("span", {
-                          staticClass:
-                            "title-font font-medium text-3xl text-gray-900 py-8 text-center lg:text-left",
-                          domProps: {
-                            textContent: _vm._s(
-                              _vm.formatCurrency(_vm.product.price)
-                            )
-                          }
-                        }),
-                        _vm._v(" "),
                         _c("AddToCart", {
                           attrs: { product: _vm.product, cart: _vm.cart }
                         })
